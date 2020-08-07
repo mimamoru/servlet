@@ -29,6 +29,7 @@ public class BookPushConfServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//ourbook作成
 		String ob_name = request.getParameter("name");
 		String ob_pass = request.getParameter("pass");
 		OBcheLogic logic1 =new OBcheLogic();

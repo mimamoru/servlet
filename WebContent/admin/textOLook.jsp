@@ -14,36 +14,10 @@
 <body>
 <h1>書籍情報の一覧</h1>
 
-<%-- <p class="favorite"  >${myBook.favorite}</p>
-<p class="kind"  >${myBook.kind_num}</p>
 
-<p class="title"  >${myBook.title}</p> --%>
-
-<table>
-
-
-  <tr>
-  <td><c:out value="${myBook.favorite}" /></td>
-<td><select onChange="location.href='TextTypeServlet?id=${mybook.id}&knum=value';">
-<c:forEach var="kind" items="${kinds}">
-
- <option value="${kind.kind_num}"><c:out value="${kind.kind_name}" /></option>
-  </c:forEach>
-
-</select></td>
-<td>${myBook.title}</td>
-
-  <td> 削除</td>
-   </tr>
-
-</table>
-
-
-
+<p class="title"  >${myBook.title}</p>
 <p class="text" >${myBook.text}</p>
 
-
-<button type="button" onclick="location.href='TextEditServlet?id=${myBook.book_id}'">編集</button>
 
 <button type="button" onclick="location.href='BookMainServlet'">戻る</button>
 

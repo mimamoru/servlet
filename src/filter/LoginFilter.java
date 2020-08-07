@@ -30,7 +30,7 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 		HttpSession session=req.getSession(false);
 		if(session==null) {
 			System.out.println("session error");
-			res.sendRedirect("../jsp/login.jsp?msg=error");
+			res.sendRedirect("../index.html?msg=error");
 			return;
 		}
 		chain.doFilter(request, response);

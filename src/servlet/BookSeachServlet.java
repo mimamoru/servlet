@@ -47,6 +47,7 @@ public class BookSeachServlet extends HttpServlet {
 				response.getWriter().print(json);
 			}
 		}
+		response.getWriter().print("[{\"id\":\"0\"}]");
 
 
 	}
