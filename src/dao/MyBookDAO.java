@@ -103,7 +103,7 @@ public class MyBookDAO {
 		String sql1 = "select * from myBOOK where title=? and account_id=?;";
 		String sql2 = "insert into myBOOK (account_id,book_id,title, text, modified,favorite,kind_num) VALUES(?,?,?,?,?,?,?);";
 		MyBook nMybook =null;
-		int id = myBook.getId();
+		//int id = myBook.getId();
 		String title=myBook.getTitle();
 		int account_id = myBook.getAccount_id();
 		try {
@@ -114,9 +114,9 @@ public class MyBookDAO {
 				String ntitle=title;
 	         do{
 	        	 	ps = conn.prepareStatement(sql1);
-					ps.setInt(1,id);
-					ps.setString(2,title);
-					ps.setInt(3,account_id);
+					//ps.setInt(1,id);
+					ps.setString(1,title);
+					ps.setInt(2,account_id);
 		            rs = ps.executeQuery();
 		            ntitle=title+"("+cnt+")";
 		            cnt++;

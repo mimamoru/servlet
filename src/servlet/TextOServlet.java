@@ -15,7 +15,7 @@ import model.OurBook;
 /**
  * Servlet implementation class TextOServlet
  */
-@WebServlet("/TextOServlet")
+@WebServlet("/admin/TextOServlet")
 public class TextOServlet extends HttpServlet {
 	//tukawanai?
 	private static final long serialVersionUID = 1L;
@@ -24,6 +24,7 @@ public class TextOServlet extends HttpServlet {
 		OurBook ourBook = new OurBook();
 		OBoneLogic logic =new OBoneLogic();
 		ourBook=logic.obone(Integer.parseInt(request.getParameter("id")));
+		//System.out.println(ourBook);
 		if(ourBook!=null) {
 		request.setAttribute("ourBook", ourBook);
 		RequestDispatcher dispatch = request.getRequestDispatcher("textO.jsp");

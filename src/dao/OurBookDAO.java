@@ -25,7 +25,7 @@ public class OurBookDAO {
 
 	public List<OurBook> oball(int account_id,int order){
 
-		String sql1 = "select * from ourBOOK where ownner_id=? and visible=true order by ?;";
+		String sql1 = "select * from ourBOOK where ownner_id=? and ovisible=true order by ?;";
 		List<OurBook> ourBooks = new ArrayList<>();
 		OurBook ourBook=null;
 		String ind=order==0?"id":"name";
@@ -77,7 +77,7 @@ public class OurBookDAO {
 	}
 
 	public OurBook obone(int id){
-		String sql1 = "select * from ourBOOK where visible=true and id=?;";
+		String sql1 = "select * from ourBOOK where ovisible=true and id=?;";
 		OurBook ourBook=null;
 		 try {
 			Class.forName (driver);
@@ -93,12 +93,12 @@ public class OurBookDAO {
 				String ourBookPass=rs.getString("pass");
 				int ourBookOwner_id=rs.getInt("owner_id");
 				//boolean visible =rs.getBoolean("visible");
-				String sql2 ="select * from ourBOOK left join book_relation on ourBOOK.id = ourBook_id left join book on BOOK.id=book_id where ourBOOK.visible=true and ourbook.id=?;";
+				String sql2 ="select * from ourBOOK left join book_relation on ourBOOK.id = ourBook_id left join book on BOOK.id=book_id where ovisible=true and ourbook.id=?;";
 				ps = conn.prepareStatement(sql2);
 		        ps.setInt(1,id);
 		        rs = ps.executeQuery();
 		        while (rs.next()) {
-					book = new Book(rs.getInt("book_id"),rs.getString("title"),rs.getString("text"),rs.getDate("modified"),rs.getInt("auther_id"),rs.getBoolean("book.visible"));
+					book = new Book(rs.getInt("book_id"),rs.getString("title"),rs.getString("text"),rs.getDate("modified"),rs.getInt("auther_id"),rs.getBoolean("visible"));
 					books.add(book);
 				}
 		        if(books.size()>0) {
@@ -159,7 +159,7 @@ public class OurBookDAO {
 
 	public int obins(String name,String pass,int owner_id){
 		String sql1 = "select * from OURBOOK where name=? and pass=?;";
-		String sql2 =  "insert into ourBOOK (name, pass,owner_id,visible) VALUES(?,?,?,true);";
+		String sql2 =  "insert into ourBOOK (name, pass,owner_id,ovisible) VALUES(?,?,?,true);";
 		int id=0;
 		try {
 			Class.forName (driver);
@@ -170,19 +170,22 @@ public class OurBookDAO {
 				ps.setString(2,pass);
 	            rs = ps.executeQuery();
 	          if(!rs.next()) {
-					conn.setAutoCommit(false);
+					//conn.setAutoCommit(false);
 		            ps = conn.prepareStatement(sql2);
 		            ps.setString(1,name);
 		            ps.setString(2,pass);
 		            ps.setInt(3,owner_id);
 		            ps.executeUpdate();
+		            conn.commit();
 		            ps = conn.prepareStatement(sql1);
 					ps.setString(1,name);
 					ps.setString(2,pass);
 		            rs = ps.executeQuery();
+		            if(rs.next()) {
 		            id= rs.getInt("id");
 		            }
-				conn.commit();
+		            }
+
 
 		    } catch (SQLException e) {
 				try {

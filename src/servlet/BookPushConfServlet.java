@@ -49,6 +49,7 @@ public class BookPushConfServlet extends HttpServlet {
 			}
 		}
 		int obid=0;
+		System.out.println(ob_id);
 		if(ob_id==0) {
 			obid=logic5.obins(ob_name, ob_pass,account.getId());
 		}

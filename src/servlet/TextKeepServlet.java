@@ -25,7 +25,7 @@ import model.MyBook;
 /**
  * Servlet implementation class TextKeepServlet
  */
-@WebServlet("/TextKeepServlet")
+@WebServlet("/admin/TextKeepServlet")
 public class TextKeepServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -45,6 +45,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	String[] titles=request.getParameterValues("titles");
 	String[] texts=request.getParameterValues("texts");
 	String[] dates=request.getParameterValues("dates");
+	System.out.println(book_ids);
+	System.out.println(dates);
 	HttpSession session=request.getSession();
 	Account account=(Account)session.getAttribute("account");
 	int account_id=account.getId();

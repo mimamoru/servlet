@@ -15,11 +15,11 @@
 <h1>書籍情報の一覧</h1>
 
 
-<p class="title"  >${book.title}</p>
-<p class="text" >${book.text}</p>
+<p class="title"  >${myBook.title}</p>
+<p class="text" >${myBook.text}</p>
 
 
-<button type="button" onclick="location.href='TextOServlet'">戻る</button>
+<button type="button" onclick="location.href='BookMainServlet'">戻る</button>
 
 
 

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
-
+<script type="text/javascript" src="js/bookMain.js"></script>
 </head>
 <body>
 <h1>書籍情報の一覧</h1>
@@ -27,21 +27,7 @@
 
 </table>
 <button type="button" onclick="location.href='TextCreateServlet'">作成</button>
-<%-- <div id="olist-modal" class="modal">
-	<div id="push-form">
-		<h2>共有</h2>
-				<form action="BookSerchServlet" method="post">
-					<c:forEach var="ourText" items="${ourBook.oBooks}">
-<li><c:set var="book_id" value="${ourText.id}"/><a href="TextOLookServlet?id=${book.id}"><c:out value="${ourText.title}" /></a></li>
 
-  </c:forEach>
-
-<button type="button" onclick="location.href='TextKeetServlet'">キープする</button>
-				</form>
-			</div>
-		</div>
-
- --%>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
   共有
@@ -63,7 +49,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-        <button type="submit" class="btn btn-primary">OK</button>
+        <button id="search-ok" type="submit" class="btn btn-primary" onclick="return false;">OK</button>
       </div>
       </form>
     </div>
