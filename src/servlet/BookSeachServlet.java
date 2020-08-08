@@ -19,7 +19,7 @@ import model.OurBook;
 /**
  * Servlet implementation class TextSeachServlet
  */
-@WebServlet("/admin/TextSeachServlet")
+@WebServlet("/admin/BookSearchServlet")
 public class BookSeachServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,10 +35,10 @@ public class BookSeachServlet extends HttpServlet {
 		BRdelLogic logic3 =new BRdelLogic();
 		OBdisLogic logic4 =new OBdisLogic();
 		int ob_id=logic1.obche(ob_name, ob_pass);
-
+		System.out.println(ob_id);
 		if(ob_id>0) {
 			OurBook ourBook=logic2.obone(ob_id);
-			if(ourBook.getoBooks().size()==0) {
+			if(ourBook.getOBooks().size()==0) {
 				logic3.brdel(ob_id);
 				logic4.obdis(ob_id);
 			}else {

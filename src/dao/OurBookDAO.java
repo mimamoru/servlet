@@ -50,7 +50,7 @@ public class OurBookDAO {
 		        rs = ps.executeQuery();
 		        while (rs.next()) {
 		        	if(rs.getBoolean("visible")) {
-					book = new Book(rs.getInt("id"),rs.getString("title"),rs.getString("text"),rs.getDate("modified"),rs.getInt("auther_id"),true);
+					book = new Book(rs.getInt("book_id"),rs.getString("title"),rs.getString("text"),rs.getDate("modified"),rs.getInt("auther_id"),true);
 					books.add(book);
 		        	}
 				}
@@ -88,21 +88,21 @@ public class OurBookDAO {
 			if (rs.next()) {
 				List<Book> books = new ArrayList<>();
 				Book book=null;
-				int ourBookId=rs.getInt("id");
+				//int ourBookId=rs.getInt("id");
 				String ourBookName=rs.getString("name");
 				String ourBookPass=rs.getString("pass");
 				int ourBookOwner_id=rs.getInt("owner_id");
 				//boolean visible =rs.getBoolean("visible");
-				String sql2 ="select * from ourBOOK left join book_relation on ourBOOK.id = ourBook_id left join book on BOOK.id=book_id where visible=true and ourbook.id=?;";
+				String sql2 ="select * from ourBOOK left join book_relation on ourBOOK.id = ourBook_id left join book on BOOK.id=book_id where ourBOOK.visible=true and ourbook.id=?;";
 				ps = conn.prepareStatement(sql2);
-		        ps.setInt(1,ourBookId);
+		        ps.setInt(1,id);
 		        rs = ps.executeQuery();
 		        while (rs.next()) {
-					book = new Book(rs.getInt("id"),rs.getString("title"),rs.getString("text"),rs.getDate("modified"),rs.getInt("auther_id"),rs.getBoolean("visible"));
+					book = new Book(rs.getInt("book_id"),rs.getString("title"),rs.getString("text"),rs.getDate("modified"),rs.getInt("auther_id"),rs.getBoolean("book.visible"));
 					books.add(book);
 				}
 		        if(books.size()>0) {
-				ourBook = new OurBook(ourBookId,ourBookName,ourBookPass,ourBookOwner_id,books,true);
+				ourBook = new OurBook(id,ourBookName,ourBookPass,ourBookOwner_id,books,true);
 		        }
 			}
 		    } catch (SQLException e) {
@@ -132,7 +132,7 @@ public class OurBookDAO {
 			conn = DriverManager.getConnection(URL, USER, PASS);
 			ps = conn.prepareStatement(sql1);
 			ps.setString(1,name);
-			ps.setString(1,pass);
+			ps.setString(2,pass);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {

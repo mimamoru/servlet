@@ -50,7 +50,7 @@
       role="dialog" aria-labelledby="label1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-    <form action="BookSerchServlet" method="post">
+    <form action="BookSearchServlet" method="post">
       <div class="modal-header">
         <h5 class="modal-title" id="label1">SERCH BOOK</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

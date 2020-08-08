@@ -42,7 +42,7 @@ public class BookPushConfServlet extends HttpServlet {
 		Account account=(Account)session.getAttribute("account");
 		if(ob_id>0) {
 			OurBook ourBook=logic2.obone(ob_id);
-			if(ourBook.getoBooks().size()==0) {
+			if(ourBook.getOBooks().size()==0) {
 				logic3.brdel(ob_id);
 				logic4.obdis(ob_id);
 				ob_id=logic1.obche(ob_name, ob_pass);

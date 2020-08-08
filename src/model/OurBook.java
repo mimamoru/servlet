@@ -57,11 +57,11 @@ public class OurBook implements Serializable {
 		this.ownner_id = ownner_id;
 	}
 
-	public List<Book> getoBooks() {
+	public List<Book> getOBooks() {
 		return oBooks;
 	}
 
-	public void setoBooks(List<Book> oBooks) {
+	public void setOBooks(List<Book> oBooks) {
 		this.oBooks = oBooks;
 	}
 
