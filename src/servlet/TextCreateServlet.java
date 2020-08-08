@@ -35,9 +35,6 @@ public class TextCreateServlet extends HttpServlet {
 		Account account=(Account)session.getAttribute("account");
 		KallLogic logic =new KallLogic();
 		List<Kind> kinds =logic.kall(account.getId());
-//		ObjectMapper mapper = new ObjectMapper();
-//		String json = mapper.writeValueAsString(kinds);
-//		response.getWriter().print(json);
 		request.setAttribute("kinds", kinds);
 		RequestDispatcher dispatch = request.getRequestDispatcher("textCreate.jsp");
 		dispatch.forward(request, response);

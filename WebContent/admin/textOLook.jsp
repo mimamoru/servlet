@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 <title>書籍管理システム</title>
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-<link rel="stylesheet" href="css/fbootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.css">
 <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
-<script src="js/script.js"></script>
+
 </head>
 <body>
 <h1>書籍情報の一覧</h1>
