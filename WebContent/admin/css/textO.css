@@ -1,0 +1,13 @@
+.modal-dialog-fluid {
+  max-width: inherit;
+  width: 98%;
+  max-height: inherit;
+  height: 98%;
+
+}
+
+.modal-dialog-fluid-width {
+  max-width: inherit;
+  width: 98%;
+
+}

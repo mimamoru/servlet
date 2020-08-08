@@ -2,12 +2,13 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import logic.BoneLogic;
 import model.Book;
@@ -24,10 +25,16 @@ public class TextOLookServlet extends HttpServlet {
 		Book book = new Book();
 		BoneLogic logic2 =new BoneLogic();
 		book=logic2.bone(Integer.parseInt(request.getParameter("id")));
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(book);
 		if(book!=null) {
-			request.setAttribute("book", book);
-			RequestDispatcher dispatch = request.getRequestDispatcher("textOLook.jsp");
-			dispatch.forward(request, response);
+			String json = mapper.writeValueAsString(book);
+			response.getWriter().print(json);
+//			request.setAttribute("book", book);
+//			RequestDispatcher dispatch = request.getRequestDispatcher("textOLook.jsp");
+//			dispatch.forward(request, response);
+		}else {
+			response.getWriter().print("{\"id\":0}");
 		}
 
 
