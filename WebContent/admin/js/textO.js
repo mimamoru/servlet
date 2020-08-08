@@ -38,13 +38,13 @@ $('#keep-btn').on('click',function(e) {
 	const url='TextKeepServlet';
 	const ourBook_id=$("input[name='ourBook_id']").val();
 	const myBooks = [];
-
+	$.when(
 		$('input:checkbox[name="book_ids"]:checked').each(function() {
 			const book_id=$(this).val();
 			const title =$(this).next().val();
 			const text=$(this).next().next().val();
 			const date=$(this).next().next().next().val();
-
+			console.log(date);
 			$.ajax({
 		        url: url,
 		        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
@@ -58,6 +58,9 @@ $('#keep-btn').on('click',function(e) {
 		        })
 		        .done(function(data) {
 		        const id =data.id;
+		        console.log(data.title)
+		        console.log(id)
+
 		        if(id>0){
 		        	myBooks.push(data.title);
 		        }
@@ -67,11 +70,15 @@ $('#keep-btn').on('click',function(e) {
 
 		        })
 
-		});
+
+		})
+		).done(
+				function() {
+					console.log("!!dc!!")
 		 if (confirm(`${myBooks.length}件読み込みました`)) {
 	            window.location.href = 'TextOServlet?id='+ourBook_id;
 	        }
-
+				})
         });
 
 //$('#keep-btn').on('click',function(e) {

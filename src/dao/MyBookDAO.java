@@ -102,6 +102,7 @@ public class MyBookDAO {
 
 		String sql1 = "select * from myBOOK where title=? and account_id=?;";
 		String sql2 = "insert into myBOOK (account_id,book_id,title, text, modified,favorite,kind_num) VALUES(?,?,?,?,?,?,?);";
+		String sql3 ="SELECT last_value FROM mybook_id_seq;";
 		MyBook nMybook =null;
 		//int id = myBook.getId();
 		String title=myBook.getTitle();
@@ -112,14 +113,17 @@ public class MyBookDAO {
 			if(myBook!=null) {
 				 int cnt=-1;
 				String ntitle=title;
+				ps = conn.prepareStatement(sql1);
 	         do{
-	        	 	ps = conn.prepareStatement(sql1);
+
 					//ps.setInt(1,id);
-					ps.setString(1,title);
+					ps.setString(1,ntitle);
 					ps.setInt(2,account_id);
 		            rs = ps.executeQuery();
-		            ntitle=title+"("+cnt+")";
 		            cnt++;
+		            ntitle=title+"("+cnt+")";
+		            System.out.println(ntitle);
+
 	         }while(rs.next());
 	         if(cnt>0) {
 	        	 myBook.setTitle(ntitle);
@@ -129,14 +133,20 @@ public class MyBookDAO {
 			ps = conn.prepareStatement(sql2);
 			ps.setInt(1,account_id);
 			ps.setInt(2,myBook.getBook_id());
-			ps.setString(3,title);
+			ps.setString(3,myBook.getTitle());
 			ps.setString(4,myBook.getText());
             ps.setDate(5,myBook.getModified());
             ps.setBoolean(6,myBook.getFavorite());
             ps.setInt(7,myBook.getKind_num());
             ps.executeUpdate();
-	        nMybook = new MyBook(myBook);
 			conn.commit();
+			ps = conn.prepareStatement(sql3);
+			rs=ps.executeQuery();
+            if (rs.next()) {
+            	myBook.setId(rs.getInt("last_value"));
+            }
+
+		     nMybook = new MyBook(myBook);
 			}
 		    } catch (SQLException e) {
 				try {
@@ -296,7 +306,7 @@ public class MyBookDAO {
 
 	public boolean mbdel(int myBook_id){
 		boolean bool=false;
-		String sql =  "DELETE FROM BOOK WHERE id = ?;";
+		String sql =  "DELETE FROM myBOOK WHERE id = ?;";
 
 		try {
 			Class.forName (driver);

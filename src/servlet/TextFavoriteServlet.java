@@ -19,7 +19,7 @@ public class TextFavoriteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MBchaLogic logic =new MBchaLogic();
-		Boolean bool=logic.mbcha(Integer.parseInt(request.getParameter("id")),Boolean.parseBoolean(request.getParameter("like")));
+		Boolean bool=logic.mbcha(Integer.parseInt(request.getParameter("id")),Boolean.parseBoolean(request.getParameter("favorite")));
 		response.getWriter().print(bool);
 	}
 

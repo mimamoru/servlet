@@ -89,7 +89,7 @@ public class BookDAO {
 
 	public int bins(Book book){
 		String sql1 =  "insert into BOOK (title, text, modified,auther_id,visible) VALUES(?,?,?,?,?);";
-		String sql2 ="select currval(id);";
+		String sql2 ="SELECT last_value FROM book_id_seq;";
 		int id=0;
 		try {
 			Class.forName (driver);
@@ -105,7 +105,7 @@ public class BookDAO {
             ps = conn.prepareStatement(sql2);
             rs=ps.executeQuery();
             if (rs.next()) {
-            	id=rs.getInt("id");
+            	id=rs.getInt("last_value");
             }
             conn.commit();
 

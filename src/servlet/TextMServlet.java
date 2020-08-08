@@ -36,11 +36,15 @@ public class TextMServlet extends HttpServlet {
 		KallLogic logic2 =new KallLogic();
 		kinds=logic2.kall(account.getId());
 		request.setAttribute("kinds", kinds);
-		System.out.println(request.getParameter("kind_num"));
-		myBooks=logic1.mball("",0,Integer.parseInt(request.getParameter("kind_num")));
+		//System.out.println(request.getParameter("kind_num"));
+		int kind_num=Integer.parseInt(request.getParameter("kind_num"));
+		myBooks=logic1.mball("",0,kind_num);
 		if(myBooks==null) {
 			myBooks = new ArrayList<MyBook>();
 		}
+		request.setAttribute("kind_num", kind_num);
+		request.setAttribute("like", "");
+		request.setAttribute("order", 0);
 			request.setAttribute("myBooks", myBooks);
 			RequestDispatcher dispatch = request.getRequestDispatcher("textM.jsp");
 			dispatch.forward(request, response);
@@ -56,10 +60,16 @@ public class TextMServlet extends HttpServlet {
 		KallLogic logic2 =new KallLogic();
 		kinds=logic2.kall(account.getId());
 		request.setAttribute("kinds", kinds);
-		myBooks=logic1.mball(request.getParameter("like"),Integer.parseInt(request.getParameter("order")),Integer.parseInt(request.getParameter("kind_num")));
+		int kind_num=Integer.parseInt(request.getParameter("kind_num"));
+		int order=Integer.parseInt(request.getParameter("order"));
+		String like=request.getParameter("like");
+		myBooks=logic1.mball(like,order,kind_num);
 		if(myBooks==null) {
 			myBooks = new ArrayList<MyBook>();
 		}
+		request.setAttribute("kind_num", kind_num);
+		request.setAttribute("like", like);
+		request.setAttribute("order", order);
 			request.setAttribute("myBooks", myBooks);
 			RequestDispatcher dispatch = request.getRequestDispatcher("textM.jsp");
 			dispatch.forward(request, response);

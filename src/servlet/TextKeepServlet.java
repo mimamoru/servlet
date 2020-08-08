@@ -71,7 +71,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			myBook =logic.mbins(myBook);
 
 
-			System.out.println(myBook);
+			//System.out.println(myBook+"?????");
 		if(myBook==null) {
 
 			response.getWriter().print("{\"id\": 0}");
