@@ -27,21 +27,21 @@ public class BookOServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		Account account=(Account)session.getAttribute("account");
 		OBallLogic logic =new OBallLogic();
-		List<OurBook> ourBooks=logic.oball(account,0);
+		List<OurBook> ourBooks=logic.oball(account);
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(ourBooks);
 		response.getWriter().print(json);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();
-		Account account=(Account)session.getAttribute("account");
-		int order=Integer.parseInt(request.getParameter("order"));
-		OBallLogic logic =new OBallLogic();
-		List<OurBook> ourBooks=logic.oball(account,order);
-		ObjectMapper mapper = new ObjectMapper();
-		String json = mapper.writeValueAsString(ourBooks);
-		response.getWriter().print(json);
+//		HttpSession session=request.getSession();
+//		Account account=(Account)session.getAttribute("account");
+//		int order=Integer.parseInt(request.getParameter("order"));
+//		OBallLogic logic =new OBallLogic();
+//		List<OurBook> ourBooks=logic.oball(account,order);
+//		ObjectMapper mapper = new ObjectMapper();
+//		String json = mapper.writeValueAsString(ourBooks);
+//		response.getWriter().print(json);
 
 
 	}

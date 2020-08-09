@@ -10,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import logic.MBallLogic;
+import model.Account;
 import model.MyBook;
 
 /**
@@ -23,21 +25,25 @@ public class BookPushListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//TextM
+		HttpSession session=request.getSession();
+		Account account=(Account)session.getAttribute("account");
+		int account_id=account.getId();
+		//int kind=Integer.parseInt(request.getParameter("kind"));
 		List<MyBook> myBooks = new ArrayList<MyBook>();
 		MBallLogic logic =new MBallLogic();
-		myBooks=logic.mball("",0,0);
+		myBooks=logic.mball(account_id,0);
 		request.setAttribute("myBooks", myBooks);
 		RequestDispatcher dispatch = request.getRequestDispatcher("bookPush.jsp");
 		dispatch.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<MyBook> myBooks = new ArrayList<MyBook>();
-		MBallLogic logic =new MBallLogic();
-		myBooks=logic.mball(request.getParameter("like"),Integer.parseInt(request.getParameter("order")),0);
-		request.setAttribute("myBooks", myBooks);
-		RequestDispatcher dispatch = request.getRequestDispatcher("bookPush.jsp");
-		dispatch.forward(request, response);
+//		List<MyBook> myBooks = new ArrayList<MyBook>();
+//		MBallLogic logic =new MBallLogic();
+//		myBooks=logic.mball(request.getParameter("like"),Integer.parseInt(request.getParameter("order")),0);
+//		request.setAttribute("myBooks", myBooks);
+//		RequestDispatcher dispatch = request.getRequestDispatcher("bookPush.jsp");
+//		dispatch.forward(request, response);
 	}
 
 }

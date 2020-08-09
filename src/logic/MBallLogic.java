@@ -7,8 +7,8 @@ import model.MyBook;
 
 public class MBallLogic {
 
-	public List<MyBook> mball(String like,int order,int kind){
+	public List<MyBook> mball(int account_id,int kind){
 		MyBookDAO dao = new MyBookDAO();
-		return dao.mball(like,order,kind);
+		return dao.mball(account_id,kind);
 	}
 }

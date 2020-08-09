@@ -32,13 +32,14 @@ public class TextMServlet extends HttpServlet {
 		MBallLogic logic1 =new MBallLogic();
 		HttpSession session=request.getSession();
 		Account account=(Account)session.getAttribute("account");
+		int account_id=account.getId();
     	List<Kind> kinds = new ArrayList<Kind>();
 		KallLogic logic2 =new KallLogic();
-		kinds=logic2.kall(account.getId());
+		kinds=logic2.kall(account_id);
 		request.setAttribute("kinds", kinds);
 		//System.out.println(request.getParameter("kind_num"));
 		int kind_num=Integer.parseInt(request.getParameter("kind_num"));
-		myBooks=logic1.mball("",0,kind_num);
+		myBooks=logic1.mball(account_id,kind_num);
 		if(myBooks==null) {
 			myBooks = new ArrayList<MyBook>();
 		}
@@ -52,30 +53,30 @@ public class TextMServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<MyBook> myBooks = new ArrayList<MyBook>();
-		MBallLogic logic1 =new MBallLogic();
-		HttpSession session=request.getSession();
-		Account account=(Account)session.getAttribute("account");
-    	List<Kind> kinds = new ArrayList<Kind>();
-		KallLogic logic2 =new KallLogic();
-		kinds=logic2.kall(account.getId());
-		request.setAttribute("kinds", kinds);
-		int kind_num=Integer.parseInt(request.getParameter("kind_num"));
-		int order=Integer.parseInt(request.getParameter("order"));
-		String like=request.getParameter("like");
-		myBooks=logic1.mball(like,order,kind_num);
-		if(myBooks==null) {
-			myBooks = new ArrayList<MyBook>();
-		}
-//		ObjectMapper mapper = new ObjectMapper();
-//		String json = mapper.writeValueAsString(myBooks);
-// 		response.getWriter().print(json);
-		request.setAttribute("kind_num", kind_num);
-		request.setAttribute("like", like);
-		request.setAttribute("order", order);
-			request.setAttribute("myBooks", myBooks);
-			RequestDispatcher dispatch = request.getRequestDispatcher("textM.jsp");
-			dispatch.forward(request, response);
+//		List<MyBook> myBooks = new ArrayList<MyBook>();
+//		MBallLogic logic1 =new MBallLogic();
+//		HttpSession session=request.getSession();
+//		Account account=(Account)session.getAttribute("account");
+//    	List<Kind> kinds = new ArrayList<Kind>();
+//		KallLogic logic2 =new KallLogic();
+//		kinds=logic2.kall(account.getId());
+//		request.setAttribute("kinds", kinds);
+//		int kind_num=Integer.parseInt(request.getParameter("kind_num"));
+//		int order=Integer.parseInt(request.getParameter("order"));
+//		String like=request.getParameter("like");
+//		myBooks=logic1.mball(like,order,kind_num);
+//		if(myBooks==null) {
+//			myBooks = new ArrayList<MyBook>();
+//		}
+////		ObjectMapper mapper = new ObjectMapper();
+////		String json = mapper.writeValueAsString(myBooks);
+//// 		response.getWriter().print(json);
+//		request.setAttribute("kind_num", kind_num);
+//		request.setAttribute("like", like);
+//		request.setAttribute("order", order);
+//			request.setAttribute("myBooks", myBooks);
+//			RequestDispatcher dispatch = request.getRequestDispatcher("textM.jsp");
+//			dispatch.forward(request, response);
 
 
 	}

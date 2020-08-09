@@ -18,7 +18,7 @@
 <form action="TextMServlet" method="post">
 <input class="form-control" name="name" type="text" placeholder="検索">
 <select name="order">
-<option class="pulldown" value="0">作成順</option>
+<option class="pulldown" value="0">追加順</option>
 <option class="pulldown" value="1">タイトル順</option>
 <option class="pulldown" value="2">更新順</option>
 </select>
@@ -29,14 +29,14 @@
  <input   name="like" type="hidden" value="${like}">
   <input   name="order" type="hidden" value="${order}">
   <table id="bookList">
-  <tr><td>FAVORITE</td> <td>BOOK</td> <td>TITLE</td> <td>GABAGE</td></tr>
+  <tr><td>FAVORITE</td> <td>BOOK</td> <td>TITLE</td> <td>MODIFIED</td><td>GABAGE</td></tr>
   <c:forEach var="myBook" items="${myBooks}">
 
   <tr>
  <td><button class="favorite-btn" type="button" value="${myBook.favorite}">favorite</button><input class="favorite-input" type="hidden"  value="${myBook.id}"></td>
  <%--  <td><c:out value="${myBook.favorite}" /></td> --%>
 <td>
-<input  name="book-kind_num" type="hidden" value="${myBook.id}">
+<input class="mbid" type="hidden" value="${myBook.id}">
 <input  class="my" name="book-kind_num" type="hidden" value="${myBook.kind_num}">
 <select class="s1" >
 <c:forEach var="kind" items="${kinds}">
@@ -45,7 +45,7 @@
 </select>
 </td>
 <td><a href="TextLookServlet?id=${myBook.id}"><c:out value="${myBook.title}" /></a></td>
-
+<td><input class="modified" type="hidden" value="${myBook.modified}"><c:out value="${myBook.modified}" /></td>
   <td class="form-check">
 	<input class="form-check-input" name="myBook_id" type="checkbox"  value="${myBook.id}">
 	<input class="form-check-input position-static" type="hidden"  value="${myBook.book_id}">

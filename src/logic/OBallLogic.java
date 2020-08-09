@@ -8,8 +8,8 @@ import model.OurBook;
 
 public class OBallLogic {
 
-	public List<OurBook> oball(Account account,int order){
+	public List<OurBook> oball(Account account){
 		OurBookDAO dao = new OurBookDAO();
-		return dao.oball(account.getId(),order);
+		return dao.oball(account.getId());
 	}
 }

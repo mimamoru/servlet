@@ -32,11 +32,12 @@ $(this).attr('placeholder','入力してください');
 
 $(".submit-btn").on('click', function(){
 const url=$(this).parent("form").attr('action');
-const name=$("input[name='name']").val();
-const pass= $("input[name='pass']").val();
+const pass=$(this).prev('.form-control').val()
+const name= $(this).prev('.form-control').prev('.form-control').val();
 const btn_id=$(this).attr('id');
-
-if ($("input[name='name']").val() == ''||$("input[name='pass']").val() == '') {
+console.log(btn_id);
+//if ($("input[name='name']").val() == ''||$("input[name='pass']").val() == '') {
+if (name== ''|| pass== '') {
 alert('入力してください');
 return false;
 }
@@ -61,7 +62,7 @@ $.ajax({
         }
         }
     }else{
-        if(confirm(data.msg)){
+        if(confirm('登録しました')){
             window.location.href = '/TextRegister';
         }
 

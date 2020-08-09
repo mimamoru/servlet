@@ -23,18 +23,17 @@ public class OurBookDAO {
     PreparedStatement ps = null;
      ResultSet rs = null;
 
-	public List<OurBook> oball(int account_id,int order){
+	public List<OurBook> oball(int account_id){
 
-		String sql1 = "select * from ourBOOK where ownner_id=? and ovisible=true order by ?;";
+		String sql1 = "select * from ourBOOK where ownner_id=? and ovisible=true?;";
 		List<OurBook> ourBooks = new ArrayList<>();
 		OurBook ourBook=null;
-		String ind=order==0?"id":"name";
+
 		 try {
 			Class.forName (driver);
 			conn = DriverManager.getConnection(URL, USER, PASS);
 			ps = conn.prepareStatement(sql1);
 			ps.setInt(1,account_id);
-			ps.setString(2,ind);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				List<Book> books = new ArrayList<>();

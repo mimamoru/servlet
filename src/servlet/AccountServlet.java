@@ -38,6 +38,7 @@ public class AccountServlet extends HttpServlet {
 		Account account = new Account();
 		account.setName(request.getParameter("name"));
 		account.setPass(request.getParameter("pass"));
+		System.out.println(request.getParameter("name")+"++++");
 		AinsLogic logic1 =new AinsLogic();
 
 		//HttpSession session=request.getSession();
@@ -47,16 +48,14 @@ public class AccountServlet extends HttpServlet {
 			account=logic2.aone(account);
 			List<Kind> kinds =logic3.kins(account);
 			if(kinds.size()>0) {
-			//session.setAttribute("account", account);
-//			ObjectMapper mapper = new ObjectMapper();
-//			String json1 = mapper.writeValueAsString(account);
-//			String json2 = mapper.writeValueAsString(kinds);
-			response.getWriter().print("{msg:"+ "登録が完了しました"+"}");
-			}else {
 
+			response.getWriter().print("{\"msg\": \"登録が完了しました\"}");
+			}else {
+				response.getWriter().print("{\"msg\": \"登録失敗しました\"}");
 			}
 		}else {
-			response.getWriter().print("{msg:"+ "既に登録されています"+"}");
+			response.getWriter().print("{\"msg\": \"既に登録されています\"}");
+
 		}
 
 	}

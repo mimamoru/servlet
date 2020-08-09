@@ -21,27 +21,22 @@ public class MyBookDAO {
     PreparedStatement ps = null;
      ResultSet rs = null;
 
-	public List<MyBook> mball(String like,int order,int kind){
+	public List<MyBook> mball(int account_id,int kind){
 		String sql;
 		if(kind>0) {
-		sql = "select * from MYBOOK where kind_num=? and title like ? order by ?;";
+		sql= "select * from MYBOOK where account_id= ? and kind_num=?  ;";
 		}else {
-		sql = "select * from MYBOOK where title like ? order by ?;";
+		sql= "select * from MYBOOK where  account_id= ? ;";
 		}
 		ArrayList<MyBook> myBooks = new ArrayList<>();
 		MyBook myBook=null;
-		String ind=order==0?"id":order==1?"title":"modified";
 		 try {
 			Class.forName (driver);
 			conn = DriverManager.getConnection(URL, USER, PASS);
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1,account_id);
 			if(kind>0) {
-			ps.setInt(1,kind);
-			ps.setString(2,"%"+like+"%");
-			ps.setString(3,ind);
-			}else {
-				ps.setString(1,"%"+like+"%");
-				ps.setString(2,ind);
+			ps.setInt(2,kind);
 			}
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -100,38 +95,39 @@ public class MyBookDAO {
 
 	public MyBook mbins(MyBook myBook){
 
-		String sql1 = "select * from myBOOK where title=? and account_id=?;";
-		String sql2 = "insert into myBOOK (account_id,book_id,title, text, modified,favorite,kind_num) VALUES(?,?,?,?,?,?,?);";
-		String sql3 ="SELECT last_value FROM mybook_id_seq;";
+		//String sql1 = "select * from myBOOK where title=? and account_id=?;";
+		String sql1 = "insert into myBOOK (account_id,book_id,title, text, modified,favorite,kind_num) VALUES(?,?,?,?,?,?,?);";
+		String sql2 ="SELECT last_value FROM mybook_id_seq;";
 		MyBook nMybook =null;
 		//int id = myBook.getId();
-		String title=myBook.getTitle();
-		int account_id = myBook.getAccount_id();
+		//String title=myBook.getTitle();
+		//int account_id = myBook.getAccount_id();
 		try {
 			Class.forName (driver);
 			conn = DriverManager.getConnection(URL, USER, PASS);
 			if(myBook!=null) {
-				 int cnt=-1;
-				String ntitle=title;
-				ps = conn.prepareStatement(sql1);
-	         do{
-
-					//ps.setInt(1,id);
-					ps.setString(1,ntitle);
-					ps.setInt(2,account_id);
-		            rs = ps.executeQuery();
-		            cnt++;
-		            ntitle=title+"("+cnt+")";
-		            System.out.println(ntitle);
-
-	         }while(rs.next());
-	         if(cnt>0) {
-	        	 myBook.setTitle(ntitle);
-	         };
-
+//				 int cnt=0;
+//				String ntitle=title;
+//				ps = conn.prepareStatement(sql1);
+//	         do{
+//	        	 ntitle=title+"("+cnt+")";
+//					//ps.setInt(1,id);
+//					ps.setString(1,ntitle);
+//					ps.setInt(2,account_id);
+//		            rs = ps.executeQuery();
+//
+//		            cnt++;
+//
+//		          //  System.out.println(ntitle);
+//
+//	         }while(rs.next());
+//
+//	        	 myBook.setTitle(ntitle);
+//
+//	         System.out.println(myBook.getTitle());
 			conn.setAutoCommit(false);
-			ps = conn.prepareStatement(sql2);
-			ps.setInt(1,account_id);
+			ps = conn.prepareStatement(sql1);
+			ps.setInt(1,myBook.getAccount_id());
 			ps.setInt(2,myBook.getBook_id());
 			ps.setString(3,myBook.getTitle());
 			ps.setString(4,myBook.getText());
@@ -140,7 +136,7 @@ public class MyBookDAO {
             ps.setInt(7,myBook.getKind_num());
             ps.executeUpdate();
 			conn.commit();
-			ps = conn.prepareStatement(sql3);
+			ps = conn.prepareStatement(sql2);
 			rs=ps.executeQuery();
             if (rs.next()) {
             	myBook.setId(rs.getInt("last_value"));
