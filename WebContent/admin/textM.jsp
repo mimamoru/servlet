@@ -31,14 +31,18 @@
   <table>
   <tr><td>FAVORITE</td> <td>BOOK</td> <td>TITLE</td> <td>GABAGE</td></tr>
   <c:forEach var="myBook" items="${myBooks}">
+
   <tr>
  <td><button class="favorite-btn" type="button" value="${myBook.favorite}">favorite</button><input class="favorite-input" type="hidden"  value="${myBook.id}"></td>
  <%--  <td><c:out value="${myBook.favorite}" /></td> --%>
-<td><select onChange="location.href='TextTypeServlet?id=${mybook.id}&num=value';">
+<td>
+<input  class="my" name="book-kind_num" type="hidden" value="${myBook.kind_num}">
+<select class="s1" onChange="location.href='TextTypeServlet?id=${mybook.id}&num=value';">
 <c:forEach var="kind" items="${kinds}">
- <option value="${kind.kind_num}"><c:out value="${kind.kind_name}" /></option>
+ <option class="type-drop" value="${kind.kind_num}" ><c:out value="${kind.kind_name}" /></option>
  </c:forEach>
-</select></td>
+</select>
+</td>
 <td><a href="TextLookServlet?id=${myBook.id}"><c:out value="${myBook.title}" /></a></td>
 
   <td class="form-check">

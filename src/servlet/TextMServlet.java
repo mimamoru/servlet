@@ -67,6 +67,9 @@ public class TextMServlet extends HttpServlet {
 		if(myBooks==null) {
 			myBooks = new ArrayList<MyBook>();
 		}
+//		ObjectMapper mapper = new ObjectMapper();
+//		String json = mapper.writeValueAsString(myBooks);
+// 		response.getWriter().print(json);
 		request.setAttribute("kind_num", kind_num);
 		request.setAttribute("like", like);
 		request.setAttribute("order", order);

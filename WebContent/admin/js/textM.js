@@ -10,7 +10,10 @@ $('.favorite-btn').each(function() {
 
 })
 
-
+$('.type-drop').each(function() {
+	 let element =$(this).parent().prev().val();
+	 $(this).parent().val(element);
+})
 
 
  $('.favorite-btn').on('click', function(event){
