@@ -13,7 +13,7 @@ import logic.MBchaLogic;
 /**
  * Servlet implementation class TextLikeServlet
  */
-@WebServlet("/admin/TextLikeServlet")
+@WebServlet("/admin/TextTypeServlet")
 public class TextTypeServlet extends HttpServlet {
 
 

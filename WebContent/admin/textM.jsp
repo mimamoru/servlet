@@ -28,7 +28,7 @@
   <input  name="kind_num" type="hidden" value="${kind_num}">
  <input   name="like" type="hidden" value="${like}">
   <input   name="order" type="hidden" value="${order}">
-  <table>
+  <table id="bookList">
   <tr><td>FAVORITE</td> <td>BOOK</td> <td>TITLE</td> <td>GABAGE</td></tr>
   <c:forEach var="myBook" items="${myBooks}">
 
@@ -36,8 +36,9 @@
  <td><button class="favorite-btn" type="button" value="${myBook.favorite}">favorite</button><input class="favorite-input" type="hidden"  value="${myBook.id}"></td>
  <%--  <td><c:out value="${myBook.favorite}" /></td> --%>
 <td>
+<input  name="book-kind_num" type="hidden" value="${myBook.id}">
 <input  class="my" name="book-kind_num" type="hidden" value="${myBook.kind_num}">
-<select class="s1" onChange="location.href='TextTypeServlet?id=${mybook.id}&num=value';">
+<select class="s1" >
 <c:forEach var="kind" items="${kinds}">
  <option class="type-drop" value="${kind.kind_num}" ><c:out value="${kind.kind_name}" /></option>
  </c:forEach>
