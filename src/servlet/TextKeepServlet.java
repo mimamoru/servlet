@@ -12,13 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import logic.MBinsLogic;
-import model.Account;
-import model.MyBook;
 
 /**
  * Servlet implementation class TextKeepServlet
@@ -39,58 +32,58 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	//mybookへ保存
-		String bookid=request.getParameter("book_id");
-		String title=request.getParameter("title");
-		String text=request.getParameter("text");
-		String dates=request.getParameter("date");
-		//System.out.println(bod+"***");
-
-		HttpSession session=request.getSession();
-		Account account=(Account)session.getAttribute("account");
-		int account_id=account.getId();
-
-		MyBook myBook=null;
-
-			int book_id=Integer.parseInt(bookid);
-
-			LocalDate date=null;
-			try {
-				date = toLocalDate(dates,"yyyy-MM-dd");
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			myBook=new MyBook();
-			myBook.setAccount_id(account_id);
-			myBook.setBook_id(book_id);
-			myBook.setTitle(title);
-			myBook.setText(text);
-			myBook.setModified(date);
-			myBook.setFavorite(false);
-			myBook.setKind_num(0);
-			MBinsLogic logic =new MBinsLogic();
-			myBook =logic.mbins(myBook);
-
-
-			//System.out.println(myBook+"?????");
-		if(myBook==null) {
-
-			response.getWriter().print("{\"id\": 0}");
-		}else{
-			ObjectMapper mapper = new ObjectMapper();
-			String json = mapper.writeValueAsString(myBook);
-			response.getWriter().print(json);
-		}
-
-	}
+//		String bookid=request.getParameter("book_id");
+//		String title=request.getParameter("title");
+//		String text=request.getParameter("text");
+//		String dates=request.getParameter("date");
+//		//System.out.println(bod+"***");
+//
+//		HttpSession session=request.getSession();
+//		Account account=(Account)session.getAttribute("account");
+//		int account_id=account.getId();
+//
+//		MyBook myBook=null;
+//
+//			int book_id=Integer.parseInt(bookid);
+//
+//			LocalDate date=null;
+//			try {
+//				date = toLocalDate(dates,"yyyy-MM-dd");
+//			} catch (ParseException e) {
+//				e.printStackTrace();
+//			}
+//			myBook=new MyBook();
+//			myBook.setAccount_id(account_id);
+//			myBook.setBook_id(book_id);
+//			myBook.setTitle(title);
+//			myBook.setText(text);
+//			myBook.setModified(date);
+//			myBook.setFavorite(false);
+//			myBook.setKind_num(0);
+//			MBinsLogic logic =new MBinsLogic();
+//			myBook =logic.mbins(myBook);
+//
+//
+//			//System.out.println(myBook+"?????");
+//		if(myBook==null) {
+//
+//			response.getWriter().print("{\"id\": 0}");
+//		}else{
+//			ObjectMapper mapper = new ObjectMapper();
+//			String json = mapper.writeValueAsString(myBook);
+//			response.getWriter().print(json);
+//		}
+//
+//	}
 
 
 	//mybookへ保存
-//	String[] book_ids=request.getParameterValues("book_ids");
-//	String[] titles=request.getParameterValues("titles");
-//	String[] texts=request.getParameterValues("texts");
-//	String[] dates=request.getParameterValues("dates");
-//	//System.out.println(bod+"***");
-//	System.out.println(dates);
+	String[] book_ids=request.getParameterValues("book_ids[]");
+	String[] titles=request.getParameterValues("titles");
+	String[] texts=request.getParameterValues("texts");
+	String[] dates=request.getParameterValues("dates");
+	//System.out.println(bod+"***");
+	System.out.println(String.format("%s  %s  %s", book_ids[0], book_ids[1], book_ids[2]));
 //	HttpSession session=request.getSession();
 //	Account account=(Account)session.getAttribute("account");
 //	int account_id=account.getId();
@@ -127,7 +120,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 ////		String json = mapper.writeValueAsString(myBooks);
 //		response.getWriter().print("{\"msg\": success}");
 //	}
-
+}
 }
 
 

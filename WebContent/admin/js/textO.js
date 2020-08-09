@@ -38,48 +38,49 @@ $('#keep-btn').on('click',function(e) {
 	const url='TextKeepServlet';
 	const ourBook_id=$("input[name='ourBook_id']").val();
 	const myBooks = [];
-	$.when(
-		$('input:checkbox[name="book_ids"]:checked').each(function() {
-			const book_id=$(this).val();
-			const title =$(this).next().val();
-			const text=$(this).next().next().val();
-			const date=$(this).next().next().next().val();
-			console.log(date);
+	const book_ids = [];
+	const titles = [];
+	const texts = [];
+	const dates = [];
+
+	$('input:checkbox[name="book_ids"]:checked').each(function() {
+		book_ids.push($(this).val());
+		titles.push($(this).next().val());
+		texts.push($(this).next().next().val());
+		dates.push($(this).next().next().next().val());
+		console.log(book_ids);
+	})
+
 			$.ajax({
-		        url: url,
-		        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
-		        data: {
-		        	book_id : book_id,
-		        	title : title,
-		        	text : text,
-		        	date : date
-		        },
-		        dataType:"json"
-		        })
-		        .done(function(data) {
-		        const id =data.id;
-		        console.log(data.title)
-		        console.log(id)
+	        url: url,
+	        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
+	        data: {
+	        	book_ids : book_ids,
+	        	titles : titles,
+	        	texts : texts,
+	        	dates : dates
+	        },
+	        dataType:"json"
+	        })
+	        .done(function(data) {
+	        const id =data.id;
+	        console.log(data.title)
+	        console.log(id)
 
-		        if(id>0){
-		        	myBooks.push(data.title);
-		        }
-		        })
-		        .fail((data) => {
-		        console.log(data+"!!!!")
-
-		        })
-
-
-		})
-		).done(
-				function() {
-					console.log("!!dc!!")
-		 if (confirm(`${myBooks.length}件読み込みました`)) {
-	            window.location.href = 'TextOServlet?id='+ourBook_id;
+	        if(id>0){
+	        	myBooks.push(data.title);
 	        }
-				})
-        });
+	        })
+	        .fail((data) => {
+	        console.log(data+"!!!!")
+
+	        })
+
+		console.log("!!dc!!")
+		if (confirm(`${myBooks.length}件読み込みました`)) {
+	        //window.location.href = 'TextOServlet?id='+ourBook_id;
+	    }
+    });
 
 //$('#keep-btn').on('click',function(e) {
 //	const url='TextKeepServlet';
