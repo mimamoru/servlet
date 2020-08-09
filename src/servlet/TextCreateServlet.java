@@ -71,7 +71,7 @@ public class TextCreateServlet extends HttpServlet {
 			String json = mapper.writeValueAsString(myBook);
 			response.getWriter().print(json);
 			}else {
-			response.getWriter().print("{msg:"+ "登録に失敗しました"+"}");
+			response.getWriter().print("{\"id\": 0}");
 		}
 	}
 

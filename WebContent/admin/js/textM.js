@@ -82,7 +82,7 @@ $('#delete-button').on('click',function() {
 
 $("select[name='order']").on('change', function() {
     const selectedOrder = $(this).val()
-    const bookTable = $("#bookList")
+    const bookTable = $("#tbody")
     const bookList = bookTable.find("tr")
 
 const sorted =
@@ -132,16 +132,6 @@ $('.s1').on('change', function(event){
         dataType:"text"
         })
         .done(function(data) {
-//        	 $.ajax({
-//			        url: "TextMServlet",
-//			        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
-//			        data: {
-//			        	kind_num : kind_num,
-//			        	like : like,
-//			        	order : order
-//			        },
-//			       // dataType:"text"
-//			        })
 
         	if(kind_num != 0) {
         		self.parents("tr").remove();
@@ -152,10 +142,31 @@ $('.s1').on('change', function(event){
         .fail((data) => {
         console.log(data+"!!!!")
         })
-
-
 });
 
+$('#sbtn1').on('click', function(){
+	 let word=$("#sbox1").val();
+ 	 console.log(word)
+ 	if(word==""){
+ 		return
+ 	}
+ 	//event.preventDefault();
+ 	word=word.toLowerCase();
+ 	$('#tbody>tr').each(function(e) {
+ 		const title=$(this).find("a").text().toLowerCase();
+ 		 console.log(title)
+ 		if(title.indexOf(word)<0){
+ 			$(this).addClass("nohit");
+ 		}else{
+ 			$(this).removeClass("nohit");
+ 		}
+	})
+});
 
+$('#sbtn2').on('click', function(){
+
+		$('#tbody>tr').removeClass("nohit");
+
+});
 
 })

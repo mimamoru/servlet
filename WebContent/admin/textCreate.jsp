@@ -27,21 +27,23 @@
 
 
 
-<form method="post" enctype="multipart/form-data" action="TextCreateServlet">
-<select >
+<form enctype="multipart/form-data" >
+<button  class="favorite-btn" type="button" >favorite</button>
+<select id="kind-select">
+
 <c:forEach var="kind" items="${kinds}">
 
  <option value="${kind.kind_num}"><c:out value="${kind.kind_name}" /></option>
   </c:forEach>
 
 </select>
-  <input class="title" name="name" type="text" placeholder="タイトル"><br>
+  <input id="title" name="title" type="text" placeholder="タイトル"><button id="create-btn" type="button" name="send" >CREATE</button><br>
  <div>
- <textarea id="contents">
+ <textarea id="contents" name="text">
 
  </textarea>
  </div>
-<button type="button" onclick="location.href='BookMainServlet'">戻る</button><button type="submit" name="send" >保存</button></form>
+<button type="button" onclick="location.href='BookMainServlet'">戻る</button></form>
 
 
 

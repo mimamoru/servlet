@@ -15,23 +15,28 @@
 <h1>書籍情報の一覧</h1>
 
 
-<form action="TextMServlet" method="post">
-<input class="form-control" name="name" type="text" placeholder="検索">
+
 <select name="order">
 <option class="pulldown" value="0">追加順</option>
 <option class="pulldown" value="1">タイトル順</option>
 <option class="pulldown" value="2">更新順</option>
 </select>
-</form>
 
+
+
+<input id="sbox1"   type="text" placeholder="含むキーワード" />
+<button id="sbtn1" type="button" onclick="return false">検索</button>
+<button id="sbtn2" type="button" onclick="return false">戻す</button>
   <form action="TextDeleteServlet" method="post">
   <input  name="kind_num" type="hidden" value="${kind_num}">
  <input   name="like" type="hidden" value="${like}">
   <input   name="order" type="hidden" value="${order}">
   <table id="bookList">
+  <thead>
   <tr><td>FAVORITE</td> <td>BOOK</td> <td>TITLE</td> <td>MODIFIED</td><td>GABAGE</td></tr>
+  </thead>
+  <tbody id="tbody">
   <c:forEach var="myBook" items="${myBooks}">
-
   <tr>
  <td><button class="favorite-btn" type="button" value="${myBook.favorite}">favorite</button><input class="favorite-input" type="hidden"  value="${myBook.id}"></td>
  <%--  <td><c:out value="${myBook.favorite}" /></td> --%>
@@ -53,7 +58,7 @@
 	</td>
    </tr>
 </c:forEach>
-
+</tbody>
 
 </table>
 <button type="button" onclick="location.href='BookMainServlet'">メインへ</button>

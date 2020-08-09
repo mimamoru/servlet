@@ -1,5 +1,9 @@
 $(function() {
+	 $('.favorite-btn').on('click', function(event){
 
+	        $(this).toggleClass('active');
+
+	   });
 
 
 	 // リッチテキストの設定
@@ -12,12 +16,52 @@ $(function() {
 	 	['font', ['strikethrough']],
 	 	['fontsize', ['fontsize']],
 	 	['color', ['color']],
-	 	['table', ['table']],
+//	 	['table', ['table']],
 	 	['insert', ['link', 'picture']],
 	 	['view', ['fullscreen']],
 	 	['para', ['ul', 'ol', 'paragraph']],
 	 ]
 	 });
+
+	 $('#create-btn').on('click', function(event){
+		 	const url='TextCreateServlet';
+		 	const title=$("#title").val();
+		 	const text=$("#contents").summernote('code');
+		 	let favorite;
+		 	 if($(".favorite-btn").hasClass('active')){
+		        	favorite ="true";
+		        } else {
+		        	favorite = "false";
+		        }
+		 	const kind_num=$("#kind-select").val();
+
+
+	        $.ajax({
+		        url: url,
+		        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
+		        data: {
+		        	title : title,
+		        	text : text,
+		        	favorite : favorite,
+		        	kind_num : kind_num
+		        },
+		        dataType:"json"
+		        })
+		        .done(function(data) {
+		        	console.log(data)
+		        	 if (confirm('テキストを作成しました')) {
+		                 window.location.href = 'BookMainServlet';
+		             }
+
+		        })
+		        .fail((data) => {
+		        console.log(data+"!!!!")
+		        	 if (confirm('エラーが発生しました')) {
+		                 window.location.href = 'BookMainServlet';
+		             }
+		        })
+	   });
+
 
 
 })
