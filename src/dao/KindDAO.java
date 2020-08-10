@@ -103,7 +103,7 @@ public class KindDAO {
 
 	public Kind kup(Kind kind){
 
-		String sql = "UPDATE kind SET kind_name=?, text=?  WHERE account_id =? and kind_num=?;";
+		String sql = "UPDATE kind SET kind_name=? WHERE account_id =? and kind_num=?;";
 		Kind nKind =null;
 		try {
 			Class.forName (driver);
@@ -111,8 +111,9 @@ public class KindDAO {
 			if(kind!=null) {
 				conn.setAutoCommit(false);
 		            ps = conn.prepareStatement(sql);
-		            ps.setInt(1,kind.getAccount_id());
-					ps.setInt(2,kind.getKind_num());
+		            ps.setString(1,kind.getKind_name());
+		            ps.setInt(2,kind.getAccount_id());
+					ps.setInt(3,kind.getKind_num());
 
 		            ps.executeUpdate();
 		            nKind = new Kind(kind);

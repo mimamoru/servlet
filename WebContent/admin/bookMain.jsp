@@ -13,24 +13,66 @@
 </head>
 <body>
 <h1>書籍情報の一覧</h1>
-<table>
 
-<tr>
-<c:forEach var="kind" items="${kinds}">
-<td>
 
-<c:set var="kind_num" value="${kind.kind_num}"/><a href="TextMServlet?kind_num=${kind_num}"><c:out value="${kind.kind_name}" /></a>
-</td>
+<div class="card-deck">
+<div class="card border-dark mb-3" style="max-width: 20rem max-hetght: 10rem;">
+ <div class="card-body text-dark">
+  <input name="kind_num" type="hidden"  value="${kinds[0].kind_num}">
+   <h4 class="card-title">${kinds[0].kind_name}</h4>
+  </div>
+  <div class="card-footer " ></div>
+</div>
 
-  </c:forEach>
-   </tr>
+<div class="card border-danger mb-3" style="max-width: 20rem max-hetght: 10rem;">
+ <div class="card-body text-danger">
+    <input  name="kind_num" type="hidden"  value="${kinds[1].kind_num}">
+   <h4 class="card-title">${kinds[1].kind_name}</h4>
+  </div>
+  <div class="card-footer" data-toggle="modal" data-target="#modal2"></div>
+</div>
 
-</table>
-<button type="button" onclick="location.href='TextCreateServlet'">作成</button>
+
+<div class="card border-warning mb-3" style="max-width: 20rem max-hetght: 10rem;">
+ <div class="card-body text-warning">
+   <input  name="kind_num" type="hidden"  value="${kinds[2].kind_num}">
+   <h4 class="card-title">${kinds[2].kind_name}</h4>
+  </div>
+  <div class="card-footer" data-toggle="modal" data-target="#modal3"></div>
+</div>
+
+
+</div>
+<div class="card-deck">
+<div class="card border-success mb-3" style="max-width: 20rem max-hetght: 10rem;">
+  <div class="card-body text-success">
+    <input  name="kind_num" type="hidden"  value="${kinds[3].kind_num}">
+   <h4 class="card-title">${kinds[3].kind_name}</h4>
+  </div>
+  <div class="card-footer" data-toggle="modal" data-target="#modal4"></div>
+</div>
+<div class="card border-info mb-3" style="max-width: 20rem max-hetght: 10rem;">
+  <div class="card-body text-info">
+    <input  name="kind_num" type="hidden"  value="${kinds[4].kind_num}">
+   <h4 class="card-title">${kinds[4].kind_name}</h4>
+  </div>
+  <div class="card-footer" data-toggle="modal" data-target="#modal5"></div>
+</div>
+  <div class="card border-primary mb-3" style="max-width: 20rem max-hetght: 10rem;">
+  <div class="card-body text-primary">
+    <input  name="kind_num" type="hidden"  value="${kinds[5].kind_num}">
+   <h4 class="card-title">${kinds[5].kind_name}</h4>
+  </div>
+  <div class="card-footer" data-toggle="modal" data-target="#modal6"></div>
+</div>
+
+</div>
+
+<button type="button" onclick="location.href='TextCreateServlet'">create</button>
 
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
-  共有
+share
 </button>
 <div class="modal fade" id="modal1" tabindex="-1"
       role="dialog" aria-labelledby="label1" aria-hidden="true">
@@ -58,10 +100,101 @@
 
 
 
+<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      <div class="modal-body">
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="new name">
+            <input  name="kind_num" type="hidden"  value="${kinds[1].kind_num}">
+            <div class="input-group-append">
+              <button type="button" class="kind-edit btn btn-danger">ok</button>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      <div class="modal-body">
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="new name">
+            <input  name="kind_num" type="hidden"  value="${kinds[2].kind_num}">
+            <div class="input-group-append">
+              <button type="button" class="kind-edit btn btn-warning">ok</button>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      <div class="modal-body">
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="new name">
+            <input  name="kind_num" type="hidden"  value="${kinds[3].kind_num}">
+            <div class="input-group-append">
+              <button type="button" class="kind-edit btn btn-success">ok</button>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      <div class="modal-body">
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="new name">
+            <input  name="kind_num" type="hidden"  value="${kinds[4].kind_num}">
+            <div class="input-group-append">
+              <button type="button" class="kind-edit btn btn-info">ok</button>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      <div class="modal-body">
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="new name">
+            <input  class="kind_num" type="hidden"  value="${kinds[5].kind_num}">
+            <div class="input-group-append">
+              <button type="button" class="kind-edit btn btn-primary">ok</button>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
 
 
-<button type="button" onclick="location.href='BookPushListServlet'">共有する</button>
-<button type="button" onclick="location.href='LogoutServlet'">ログアウト</button>
+
+
+<button type="button" onclick="location.href='BookPushListServlet'">public space</button>
+<button type="button" onclick="location.href='LogoutServlet'">logout</button>
 
 
 
