@@ -180,7 +180,7 @@ share
       <div class="modal-body">
         <div class="input-group mb-2">
             <input type="text" class="form-control" placeholder="new name">
-            <input  class="kind_num" type="hidden"  value="${kinds[5].kind_num}">
+            <input  name="kind_num" type="hidden"  value="${kinds[5].kind_num}">
             <div class="input-group-append">
               <button type="button" class="kind-edit btn btn-primary">ok</button>
           </div>
