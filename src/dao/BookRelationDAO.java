@@ -21,7 +21,7 @@ public class BookRelationDAO {
 
 
 	public void brins(int b_id,int ob_id){
-		String sql  =  "insert into BOOKReration (book_id,ourbook_id) VALUES(?,?);";
+		String sql  =  "insert into book_relation (book_id,ourbook_id) VALUES(?,?);";
 		try {
 			Class.forName (driver);
 			conn = DriverManager.getConnection(URL, USER, PASS);
@@ -29,7 +29,7 @@ public class BookRelationDAO {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1,b_id);
 			ps.setInt(2,ob_id);
-            rs = ps.executeQuery();
+            ps.executeUpdate();
 			conn.commit();
 
 		    } catch (SQLException e) {
@@ -57,7 +57,7 @@ public class BookRelationDAO {
 
 
 	public void brdel(int ob_id){
-		String sql =  "DELETE FROM BOOKrelation WHERE id = ?;";
+		String sql =  "DELETE FROM book_relation WHERE ourBook_id = ?;";
 
 		try {
 			Class.forName (driver);

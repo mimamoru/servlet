@@ -28,6 +28,7 @@ public class BookOServlet extends HttpServlet {
 		Account account=(Account)session.getAttribute("account");
 		OBallLogic logic =new OBallLogic();
 		List<OurBook> ourBooks=logic.oball(account);
+		System.out.println(ourBooks.size());
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(ourBooks);
 		response.getWriter().print(json);

@@ -5,15 +5,17 @@ $(function() {
 
 $("select[name='order']").on('change', function() {
     const selectedOrder = $(this).val()
+    let table
     if($(this).hasClass("select1")){
-    	const table = $("#table1")
+    	table = $("#table1")
+    	console.log(table)
     }else{
-    	const table = $("#table2")
+    	table = $("#table2")
         }
     const list = table.find("tr")
 
 const sorted =
-bookList.sort((prev, next) => {
+	list.sort((prev, next) => {
 
 	switch(Number(selectedOrder)) {
 		case 0:
@@ -22,14 +24,14 @@ bookList.sort((prev, next) => {
 			// タイトル順
 			return $(prev).find(".form-check-label").text() > $(next).find(".form-check-label").text()?1:-1
 		case 2:
-			return Date.parse($(next).find(".form-modified").attr("value"))- Date.parse($(prev).find(".form-modified").attr("value"))
+			return Date.parse($(next).find(".form-modified").val())- Date.parse($(prev).find(".form-modified").val())
 	}
 })
 
 // テーブル再描写
-bookTable.children().remove()
+table.children().remove()
 sorted.map((index, elm) => {
-	bookTable.append(elm)
+	table.append(elm)
 	console.log($(elm).find(".form-check-label").text())
  })
 })
@@ -77,28 +79,61 @@ $('#share').on('click',function() {
         	name : name,
         	pass : pass
         },
-        dataType:"text"
+        dataType:"json"
         }) .done(function(data) {
-
-	        console.log(data)
-	        elm.forEach( function( e ) {
-				e.remove();
-				 });
+	        console.log(data.ob_id)
+	        const ob_id=data.ob_id;
+	       if(ob_id>0){
+	    		const url2='BookPushServlet';
+	    		const b_ids=[]
+	    		const checks='input:checkbox[name="book_id"]:checked'
+	    			if(checks.length==0){
+	    				return false;
+	    			}
+	    		$(checks).each(function() {
+	    			b_ids.push($(this).attr("value"))
+	    		})
+	    	   $.ajax({
+			        url: url2,
+			        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
+			        data: {
+			        	b_ids : b_ids,
+			        	ob_id : ob_id
+			        },
+			        dataType:"text"
+			        })
+	       }else{
+	    	   alert('共有に失敗しました')
+		        window.location.href = 'BookPushListServlet';
+	       }
+	       alert('共有しました')
+	        window.location.href = 'BookPushListServlet';
 
 	        })
 	        .fail((data) => {
 	        console.log(data+"!!!!")
-
+	        alert('共有に失敗しました')
+	        return false;
+	        //window.location.href = 'BookPushListServlet';
 	        })
-//	const url='BookPushServlet';
-//const book_ids=[]
-//	const ourBook_ids=[]
+        });
 
-		$('input:checkbox[name="myBook_id"]:checked').each(function() {
+$('#cancel').on('click',function() {
+	if (!confirm('本当に削除しますか')) {
+        return
+     }
+	const url='BookODelServlet';
+	const checks='input:checkbox[name="ourBook_id"]:checked'
+	if(checks.length==0){
+		return false;
+	}
+	const ob_ids=[]
+	const elm=[]
 
-			myBook_ids.push($(this).val()),
-			book_ids.push($(this).next().val())
+		$(checks).each(function() {
 			elm.push($(this).parents("tr"))
+			ob_ids.push($(this).val())
+
 
 		})
 
@@ -106,13 +141,13 @@ $('#share').on('click',function() {
 		        url: url,
 		        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
 		        data: {
-		        	book_ids : book_ids,
-		        	myBook_ids : myBook_ids
-		        },
-		        dataType:"text"
-		        }) .done(function(data) {
+		        	ob_ids : ob_ids
 
-			        console.log(data)
+		        }
+
+		        }) .done(function() {
+
+			       // console.log(data)
 			        elm.forEach( function( e ) {
 						e.remove();
 						 });
@@ -124,38 +159,21 @@ $('#share').on('click',function() {
 			        })
         });
 
-$('#cancel').on('click',function() {
-	if (!confirm('本当に削除しますか')) {
-        return
-     }
-	const url='TextDeleteServlet';
-//	const kind_num=$("input[name='kind_num']").val();
-//	const like=$("input[name='like']").val();
-//	const order=$("input[name='order']").val();
-	const book_ids=[]
-	const myBook_ids=[]
-	const elm=[]
-		$('input:checkbox[name="myBook_id"]:checked').each(function() {
+$('#share-tab').on('click',function() {
 
-			myBook_ids.push($(this).val()),
-			book_ids.push($(this).next().val())
-			elm.push($(this).parents("tr"))
-
-		})
-
+	const url='BookOServlet';
+	//const names=[];
 			$.ajax({
 		        url: url,
-		        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
-		        data: {
-		        	book_ids : book_ids,
-		        	myBook_ids : myBook_ids
-		        },
-		        dataType:"text"
+		        type: "GET", // HTTPメソッドを指定（デフォルトはGET）
+		        dataType:"json"
 		        }) .done(function(data) {
 
 			        console.log(data)
-			        elm.forEach( function( e ) {
-						e.remove();
+			         $("#table2").children().remove()
+			        data.forEach( function(e) {
+			        $("#table2").append("<tr><td><input name=\"ourBook_id\" class=\"form-check-input\" type=\"checkbox\"  value=\""+e.id+"\"></td><td><label class=\"form-check-label\" for=\"check1a\">"+e.name+"</label></td></tr>")
+						//names.push("<tr><td>"+e.name()+"</tr></td>");
 						 });
 
 			        })

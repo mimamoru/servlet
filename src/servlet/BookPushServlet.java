@@ -23,8 +23,10 @@ public class BookPushServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int ob_id = Integer.parseInt(request.getParameter("ob_id"));
-		String[] b_ids = request.getParameterValues("ob_id");
+		String[] b_ids = request.getParameterValues("b_ids[]");
 		BRinsLogic logic =new BRinsLogic();
+		System.out.println(ob_id+"**jb*");
+		System.out.println(b_ids[0]+"**hj*");
 		int book_id;
 		for(String bid:b_ids) {
 			book_id=Integer.parseInt(bid);

@@ -19,37 +19,36 @@
   <li class="nav-item">
     <a class="nav-link active" id="item1-tab" data-toggle="tab" href="#item1" role="tab" aria-controls="item1" aria-selected="true">my text</a>
   </li>
-  <li class="nav-item">
+  <li id="share-tab" class="nav-item">
     <a class="nav-link" id="item2-tab" data-toggle="tab" href="#item2" role="tab" aria-controls="item2" aria-selected="false">pushed book</a>
   </li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
 <!--   <form action="TextMServlet" method="post"> -->
-
-<input id="sbox1"   type="text" placeholder="含むキーワード" />
-<button id="sbtn1" type="button" onclick="return false">検索</button>
-<button id="sbtn2" type="button" onclick="return false">戻す</button>
-
 <select name="order" class="select1">
 <option class="pulldown" value="0">追加順</option>
 <option class="pulldown" value="1">タイトル順</option>
 <option class="pulldown" value="2">更新順</option>
 </select>
+<input id="sbox1"   type="text" placeholder="含むキーワード" />
+<button id="sbtn1" type="button" onclick="return false">検索</button>
+<button id="sbtn2" type="button" onclick="return false">戻す</button>
+
+
 
 <!-- </form> -->
 
 
   <div class="form-check">
-	<table >
+	<table>
 	<thead><tr><td></td><td>title</td><td>modified</td></tr></thead>
 	<tbody id="table1">
 	 <c:forEach var="myBook" items="${myBooks}">
 	 <tr>
-	  <td><input class="form-check-input" type="checkbox"  value="${myBook.book_id}"></td>
+	  <td><input name="book_id" class="form-check-input" type="checkbox"  value="${myBook.book_id}"></td>
 	  <td><label class="form-check-label" for="check1a" >${myBook.title}</label></td>
-	  <td><input class="form-modified" type="text"  value="${myBook.modified}">
-	  </td>
+	  <td class="form-modified">${myBook.modified}</td>
 	  </tr>
 	 </c:forEach>
 	 </tbody>
@@ -106,15 +105,7 @@
 	<table>
 	<thead><tr><td></td><td>title</td></tr></thead>
 	<tbody  id="table2">
-	 <c:forEach var="ourBook" items="${ourBooks}">
-	 <tr>
-	 <td>
-	  <input class="form-check-input" type="checkbox"  value="${ourBook.id}"> </td>
-	  <td>
-	  <label class="form-check-label" for="check1a">${ourBook.name}</label>
-	  </td>
-	   </tr>
-	 </c:forEach>
+
 	 </tbody>
 	 </table>
 	</div>

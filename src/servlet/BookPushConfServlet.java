@@ -40,19 +40,21 @@ public class BookPushConfServlet extends HttpServlet {
 		int ob_id=logic1.obche(ob_name, ob_pass);
 		HttpSession session=request.getSession();
 		Account account=(Account)session.getAttribute("account");
+		System.out.println(ob_id);
 		if(ob_id>0) {
 			OurBook ourBook=logic2.obone(ob_id);
-			if(ourBook.getOBooks().size()==0) {
+			if(ourBook==null) {
 				logic3.brdel(ob_id);
 				logic4.obdis(ob_id);
 				ob_id=logic1.obche(ob_name, ob_pass);
 			}
 		}
 		int obid=0;
-		System.out.println(ob_id);
+
 		if(ob_id==0) {
 			obid=logic5.obins(ob_name, ob_pass,account.getId());
 		}
+		System.out.println(obid+"***");
 		response.getWriter().print("{\"ob_id\": "+obid+"}");
 	}
 

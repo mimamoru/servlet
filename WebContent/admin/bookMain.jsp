@@ -72,7 +72,7 @@
 
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
-share
+public space
 </button>
 <div class="modal fade" id="modal1" tabindex="-1"
       role="dialog" aria-labelledby="label1" aria-hidden="true">
@@ -193,7 +193,7 @@ share
 
 
 
-<button type="button" onclick="location.href='BookPushListServlet'">public space</button>
+<button type="button" onclick="location.href='BookPushListServlet'">share</button>
 <button type="button" onclick="location.href='LogoutServlet'">logout</button>
 
 
