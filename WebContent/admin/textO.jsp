@@ -7,9 +7,9 @@
 <title>書籍管理システム</title>
 <link rel="stylesheet" type="text/css" href="css/textO.css">
 <link rel="stylesheet" href="css/bootstrap.css">
-<script type="text/javascript" src="js/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
-<script type="text/javascript" src="js/textO.js"></script>
+ <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
 </head>
 <body>
 <h1>書籍情報の一覧</h1>
@@ -21,10 +21,13 @@
 	 <c:forEach var="oBook" items="${ourBook.getOBooks()}">
 	  <tr>
 	 <td> <input class="form-check-input" type="checkbox" name="book_ids" value="${oBook.id}">
-	   <input type="hidden" name="titles" value="${oBook.title}">
-	   <input type="hidden" name="texts" value="${oBook.text}">
-	   <input type="hidden" name="dates" value="${oBook.modified}">
+	  <%--  <input type="hidden" name="titles" value="${oBook.title}"> --%>
+	   <p class="nolook oBook-text"> ${oBook.text}</p>
+	  <%--  <input type="hidden" name="texts" value="${oBook.text}"> --%>
 
+	  <p class="nolook oBook-modified">${oBook.modified}</p>
+	  <%--  <input type="hidden" name="dates" value="${oBook.modified}">
+ --%>
 	  <label class="form-check-label" for="check1a">${oBook.title}</label></td>
 <td> <button  name="${oBook.id}" type="button" class="open-btn btn btn-primary" data-toggle="modal" data-target="#modal1">
  OPEN
@@ -53,6 +56,11 @@
       </div>
       <div id="text" class="modal-body modal-dialog-fluid">
 			<!-- <div>text</div> -->
+			<div>
+  <textarea id="contents" name="text">
+<%-- ${myBook.text} --%>
+ </textarea>
+ </div>
       </div>
 
 
@@ -60,7 +68,11 @@
   </div>
 </div>
 
-
+<script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+<script type="text/javascript" src="js/textO.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/lang/summernote-ja-JP.js"></script>
 
 
 </body>

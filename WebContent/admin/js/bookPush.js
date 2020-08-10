@@ -103,8 +103,9 @@ $('#share').on('click',function() {
 			        dataType:"text"
 			        })
 	       }else{
-	    	   alert('共有に失敗しました')
-		        window.location.href = 'BookPushListServlet';
+	    	   alert('name,passwordが重複しています')
+	    	    return false;
+		        //window.location.href = 'BookPushListServlet';
 	       }
 	       alert('共有しました')
 	        window.location.href = 'BookPushListServlet';

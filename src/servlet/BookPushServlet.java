@@ -25,8 +25,8 @@ public class BookPushServlet extends HttpServlet {
 		int ob_id = Integer.parseInt(request.getParameter("ob_id"));
 		String[] b_ids = request.getParameterValues("b_ids[]");
 		BRinsLogic logic =new BRinsLogic();
-		System.out.println(ob_id+"**jb*");
-		System.out.println(b_ids[0]+"**hj*");
+//		System.out.println(ob_id+"**jb*");
+//		System.out.println(b_ids[0]+"**hj*");
 		int book_id;
 		for(String bid:b_ids) {
 			book_id=Integer.parseInt(bid);

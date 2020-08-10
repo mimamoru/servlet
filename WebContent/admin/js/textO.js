@@ -1,6 +1,20 @@
 $(function() {
-
-
+$('#contents').summernote('disable');
+$('#contents').summernote({
+	 height: 580,
+	 fontNames: ["YuGothic","Yu Gothic","Hiragino Kaku Gothic Pro","Meiryo","sans-serif", "Arial","Arial Black","Comic Sans MS","Courier New","Helvetica Neue","Helvetica","Impact","Lucida Grande","Tahoma","Times New Roman","Verdana"],
+	 lang: "ja-JP",
+//	 toolbar: [
+//	 	['style', ['bold', 'italic', 'underline', 'clear']],
+//	 	['font', ['strikethrough']],
+//	 	['fontsize', ['fontsize']],
+//	 	['color', ['color']],
+//	 	['table', ['table']],
+//	 	['insert', ['link', 'picture']],
+//	 	['view', ['fullscreen']],
+//	 	['para', ['ul', 'ol', 'paragraph']],
+//	 ]
+	 });
 
 $('.open-btn').on('click',function(e) {
 	const url='TextOLookServlet';
@@ -20,7 +34,8 @@ $('.open-btn').on('click',function(e) {
         const title =data.title;
         const text =data.text;
         $('#label1').text(title);
-        $('#text').text(text);
+        //$("#contents").summernote('code')
+        $('#contents').val(text);
         }else{
         	alert('読み込みできませんでした')
                 window.location.href = 'TextOServlet?id='+ourBook_id;
@@ -44,9 +59,9 @@ $('#keep-btn').on('click',function(e) {
 
 	$('input:checkbox[name="book_ids"]:checked').each(function() {
 		book_ids.push($(this).val());
-		titles.push($(this).next().val());
-		texts.push($(this).next().next().val());
-		dates.push($(this).next().next().next().val());
+		titles.push($(this).siblings('.form-check-label').val());
+		texts.push($(this).siblings('.oBook-text').val());
+		dates.push($(this).siblings('.oBook-modified').val());
 		console.log(book_ids);
 	})
 

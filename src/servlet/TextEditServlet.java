@@ -57,7 +57,9 @@ public class TextEditServlet extends HttpServlet {
 			myBook.setTitle(title);
 			myBook.setText(text);
 			myBook.setModified(date);
+			System.out.println(myBook);
 			myBook=logic3.mbup(myBook);
+
 			ObjectMapper mapper = new ObjectMapper();
 			if(myBook!=null) {
 				String json = mapper.writeValueAsString(myBook);

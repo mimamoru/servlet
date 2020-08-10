@@ -106,25 +106,22 @@ public class MyBookDAO {
 			Class.forName (driver);
 			conn = DriverManager.getConnection(URL, USER, PASS);
 			if(myBook!=null) {
-				 int cnt=0;
+				int cnt=1;
 				String ntitle=title;
 				ps = conn.prepareStatement(sql1);
-	         do{
-	        	 ntitle=title+"("+cnt+")";
-					//ps.setInt(1,id);
-					ps.setString(1,ntitle);
-					ps.setInt(2,account_id);
-		            rs = ps.executeQuery();
+				ps.setString(1,ntitle);
+				ps.setInt(2,account_id);
+	            rs = ps.executeQuery();
+	            while(rs.next()){
+						ntitle=title+"("+cnt+")";
+						ps.setString(1,ntitle);
+						ps.setInt(2,account_id);
+			            rs = ps.executeQuery();
+			            cnt++;
 
-		            cnt++;
-
-		          //  System.out.println(ntitle);
-
-	         }while(rs.next());
-
-	        	 myBook.setTitle(ntitle);
-
-	         System.out.println(myBook.getTitle());
+					}
+			myBook.setTitle(ntitle);
+			System.out.println(myBook.getTitle());
 			conn.setAutoCommit(false);
 			ps = conn.prepareStatement(sql2);
 			ps.setInt(1,account_id);
@@ -174,24 +171,28 @@ public class MyBookDAO {
 		MyBook nMybook =null;
 		int id = myBook.getId();
 		String title=myBook.getTitle();
+		int account_id = myBook.getAccount_id();
 		try {
 			Class.forName (driver);
 			conn = DriverManager.getConnection(URL, USER, PASS);
+			System.out.println(myBook+":");
 			if(myBook!=null) {
-				 int cnt=-1;
+				int cnt=1;
 				String ntitle=title;
-	         do{
-	        	 	ps = conn.prepareStatement(sql1);
+				ps = conn.prepareStatement(sql1);
+				ps.setInt(1,id);
+				ps.setString(2,ntitle);
+				ps.setInt(3,account_id);
+				rs = ps.executeQuery();
+				while(rs.next()){
+					ntitle=title+"("+cnt+")";
 					ps.setInt(1,id);
-					ps.setString(2,title);
-					ps.setInt(3,myBook.getAccount_id());
-		            rs = ps.executeQuery();
-		            ntitle=title+"("+cnt+")";
-		            cnt++;
-	         }while(rs.next());
-	         if(cnt>0) {
-	        	 myBook.setTitle(ntitle);
-	         };
+					ps.setString(2,ntitle);
+					ps.setInt(3,account_id);
+					rs = ps.executeQuery();
+					cnt++;
+				}
+				myBook.setTitle(ntitle);
 					conn.setAutoCommit(false);
 		            ps = conn.prepareStatement(sql2);
 		            ps.setString(1,myBook.getTitle());
