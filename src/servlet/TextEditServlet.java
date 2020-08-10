@@ -57,15 +57,13 @@ public class TextEditServlet extends HttpServlet {
 			myBook.setTitle(title);
 			myBook.setText(text);
 			myBook.setModified(date);
-			myBook.setFavorite(Boolean.parseBoolean(request.getParameter("favorite")));
-			myBook.setKind_num(Integer.parseInt(request.getParameter("kind_num")));
 			myBook=logic3.mbup(myBook);
 			ObjectMapper mapper = new ObjectMapper();
 			if(myBook!=null) {
 				String json = mapper.writeValueAsString(myBook);
 				response.getWriter().print(json);
 			}else {
-			response.getWriter().print("{msg:"+ "編集に失敗しました"+"}");
+			response.getWriter().print("{\"id\":0}");
 		}
 	}
 

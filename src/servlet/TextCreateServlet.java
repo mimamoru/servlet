@@ -56,6 +56,7 @@ public class TextCreateServlet extends HttpServlet {
 
 		BinsLogic logic1 =new BinsLogic();
 		int book_id=logic1.bins(book);
+		System.out.println(book_id);
 		if(book_id>0) {
 			MyBook myBook=new MyBook();
 			myBook.setAccount_id(id);

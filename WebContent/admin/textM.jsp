@@ -29,8 +29,8 @@
 <button id="sbtn2" type="button" onclick="return false">戻す</button>
   <form action="TextDeleteServlet" method="post">
   <input  name="kind_num" type="hidden" value="${kind_num}">
- <input   name="like" type="hidden" value="${like}">
-  <input   name="order" type="hidden" value="${order}">
+ <%-- <input   name="like" type="hidden" value="${like}">
+  <input   name="order" type="hidden" value="${order}"> --%>
   <table id="bookList">
   <thead>
   <tr><td>FAVORITE</td> <td>BOOK</td> <td>TITLE</td> <td>MODIFIED</td><td>GABAGE</td></tr>
@@ -49,7 +49,7 @@
  </c:forEach>
 </select>
 </td>
-<td><a href="TextLookServlet?id=${myBook.id}"><c:out value="${myBook.title}" /></a></td>
+<td><a href="TextLookServlet?id=${myBook.id}&kind_num=${kind_num}"><c:out value="${myBook.title}" /></a></td>
 <td><input class="modified" type="hidden" value="${myBook.modified}"><c:out value="${myBook.modified}" /></td>
   <td class="form-check">
 	<input class="form-check-input" name="myBook_id" type="checkbox"  value="${myBook.id}">

@@ -1,53 +1,179 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>書籍管理システム</title>
-<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-<link rel="stylesheet" href="css/bootstrap.css">
-<script type="text/javascript" src="js/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+$(function() {
+	const kind_num=$("input[name='kind_num']").val();
+	 if($('.favorite-btn').attr("value")=="true"){
+		 $('.favorite-btn').toggleClass('active');
+     }
+	 $('#contents').summernote('disable');
+ $('.s1').val($('.my').val());
 
-</head>
-<body>
-<h1>書籍情報の一覧</h1>
-
-<%-- <p class="favorite"  >${myBook.favorite}</p>
-<p class="kind"  >${myBook.kind_num}</p>
-
-<p class="title"  >${myBook.title}</p> --%>
-
-<table>
-
-
-  <tr>
-  <td><c:out value="${myBook.favorite}" /></td>
-<td><select onChange="location.href='TextTypeServlet?id=${mybook.id}&knum=value';">
-<c:forEach var="kind" items="${kinds}">
-
- <option value="${kind.kind_num}"><c:out value="${kind.kind_name}" /></option>
-  </c:forEach>
-
-</select></td>
-<td>${myBook.title}</td>
-
-  <td> 削除</td>
-   </tr>
-
-</table>
+ $('#contents').summernote({
+	 height: 580,
+	 fontNames: ["YuGothic","Yu Gothic","Hiragino Kaku Gothic Pro","Meiryo","sans-serif", "Arial","Arial Black","Comic Sans MS","Courier New","Helvetica Neue","Helvetica","Impact","Lucida Grande","Tahoma","Times New Roman","Verdana"],
+	 lang: "ja-JP",
+	 toolbar: [
+	 	['style', ['bold', 'italic', 'underline', 'clear']],
+	 	['font', ['strikethrough']],
+	 	['fontsize', ['fontsize']],
+	 	['color', ['color']],
+//	 	['table', ['table']],
+	 	['insert', ['link', 'picture']],
+	 	['view', ['fullscreen']],
+	 	['para', ['ul', 'ol', 'paragraph']],
+	 ]
+	 });
 
 
+ $('.favorite-btn').on('click', function(event){
+	 	const url='TextFavoriteServlet';
+	 	let favorite;
+	 	const id=$(".mbid").val();
+     event.preventDefault();
+     $(this).toggleClass('active');
 
-<p class="text" >${myBook.text}</p>
+     if($(this).hasClass('active')){
+     	favorite ="true";
+     } else {
+     	favorite = "false";
+     }
+     $.ajax({
+	        url: url,
+	        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
+	        data: {
+	        	id : id,
+	        	favorite : favorite,
+	        },
+	        dataType:"text"
+	        })
+	        .done(function(data) {
+	        console.log(data)
+	        })
+	        .fail((data) => {
+	        console.log(data+"!!!!")
+	        })
+});
+
+ $('.s1').on('change', function(event){
+		const url='TextTypeServlet';
+		const id=$(".mbid").val();
+	 	const num=$(this).val();
+
+	 	console.log(id)
+	 	console.log(num)
+	    $.ajax({
+	        url: url,
+	        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
+	        data: {
+	        	id : id,
+	        	num : num,
+	        },
+	        dataType:"text"
+	        })
+	        .done(function(data) {
+
+	        console.log(data)
+	        })
+	        .fail((data) => {
+	        console.log(data+"!!!!")
+	        })
+	});
+
+ $('#edit-btn').on('click',function() {
+	 if ($(this).hasClass('edit-second')) {
+		 const url='TextEditServlet';
+		 const book_id=$(".delete-btn").val();
+		 const id=$(".mbid").val();
+		 const title = $("#text-form").val();
+		 const text = $("#contents").summernote('code');
+		 if (title== '') {
+				alert('タイトルを入力してください');
+				return false;
+				}
+			$.ajax({
+	        url: url,
+	        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
+	        data: {
+	        	book_id:book_id,
+	        	id : id,
+	        	title : title,
+	        	text : text
+	        },
+	        dataType:"text"
+	        }) .done(function(data) {
+
+		        console.log(data)
+		        if (confirm('更新しました')) {
+		        	  window.location.href = 'TextMServlet?kind_num='+kind_num;
+}
 
 
-<button type="button" onclick="location.href='TextEditServlet?id=${myBook.book_id}'">編集</button>
+		        })
+		        .fail((data) => {
+		        console.log(data+"!!!!")
 
-<button type="button" onclick="location.href='BookMainServlet'">戻る</button>
+		        })
+     }else{
+    	 $(this).addClass('edit-second');
+    	 $(this).text('finish');
+    	 $('#contents').summernote('enable');
+    	 $('#text-form').attr('readonly',false);
+
+
+     }
+
+	        });
+
+ $('.delete-btn').on('click',function() {
+	 if (!confirm('本当に削除しますか')) {
+        return
+     }
+		const url='TextDeleteServlet';
+		const book_ids=[]
+		const myBook_ids=[]
+		myBook_ids.push($(".mbid").val()),
+		book_ids.push($(this).val())
+
+
+				$.ajax({
+			        url: url,
+			        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
+			        data: {
+			        	book_ids : book_ids,
+			        	myBook_ids : myBook_ids
+			        },
+			        dataType:"text"
+			        }) .done(function(data) {
+
+				        console.log(data)
+				        if (!confirm('削除しました')) {
+				        	  window.location.href = 'TextMServlet?kind_num='+kind_num;
+     }
+
+
+				        })
+				        .fail((data) => {
+				        console.log(data+"!!!!")
+
+				        })
+	        });
 
 
 
-</body>
-</html>
+
+
+ $('#back-btn').on('click',function() {
+	 if($('#edit-btn').hasClass('edit-second')){
+		 if (!confirm('変更が保存されません。よろしいですか。')) {
+		        return
+		 }
+		 $('#edit-btn').removeClass('edit-second');
+		 $('#text-form').attr('readonly',true);
+		 $('#contents').summernote('disable');
+
+	 }
+
+		 window.location.href = 'TextMServlet?kind_num='+kind_num;
+
+});
+
+
+});

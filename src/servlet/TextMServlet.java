@@ -44,8 +44,8 @@ public class TextMServlet extends HttpServlet {
 			myBooks = new ArrayList<MyBook>();
 		}
 		request.setAttribute("kind_num", kind_num);
-		request.setAttribute("like", "");
-		request.setAttribute("order", 0);
+//		request.setAttribute("like", "");
+//		request.setAttribute("order", 0);
 			request.setAttribute("myBooks", myBooks);
 			RequestDispatcher dispatch = request.getRequestDispatcher("textM.jsp");
 			dispatch.forward(request, response);
