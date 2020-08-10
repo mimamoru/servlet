@@ -15,7 +15,7 @@ $(function() {
 	 	['font', ['strikethrough']],
 	 	['fontsize', ['fontsize']],
 	 	['color', ['color']],
-//	 	['table', ['table']],
+	 	['table', ['table']],
 	 	['insert', ['link', 'picture']],
 	 	['view', ['fullscreen']],
 	 	['para', ['ul', 'ol', 'paragraph']],
@@ -101,10 +101,8 @@ $(function() {
 	        }) .done(function(data) {
 
 		        console.log(data)
-		        if (confirm('更新しました')) {
-		        	  window.location.href = 'TextMServlet?kind_num='+kind_num;
-}
-
+		       alert('更新しました')
+		       window.location.href = 'TextMServlet?kind_num='+kind_num;
 
 		        })
 		        .fail((data) => {
@@ -116,8 +114,6 @@ $(function() {
     	 $(this).text('finish');
     	 $('#contents').summernote('enable');
     	 $('#text-form').attr('readonly',false);
-
-
      }
 
 	        });
@@ -132,7 +128,6 @@ $(function() {
 		myBook_ids.push($(".mbid").val()),
 		book_ids.push($(this).val())
 
-
 				$.ajax({
 			        url: url,
 			        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
@@ -144,9 +139,9 @@ $(function() {
 			        }) .done(function(data) {
 
 				        console.log(data)
-				        if (!confirm('削除しました')) {
-				        	  window.location.href = 'TextMServlet?kind_num='+kind_num;
-     }
+				        alert('削除しました')
+				        window.location.href = 'TextMServlet?kind_num='+kind_num;
+   
 
 
 				        })

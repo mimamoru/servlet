@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>書籍管理システム</title>
-<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="css/bookPush.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
-
+<script type="text/javascript" src="js/bookPush.js"></script>
 </head>
 <body>
 <h1>書籍情報の一覧</h1>
@@ -25,21 +25,35 @@
 </ul>
 <div class="tab-content">
   <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
-  <form action="TextMServlet" method="post">
-<input class="form-control" name="name" type="text" placeholder="検索">
+<!--   <form action="TextMServlet" method="post"> -->
 
-<select name="order">
-<option class="pulldown" value="0">作成順</option>
+<input id="sbox1"   type="text" placeholder="含むキーワード" />
+<button id="sbtn1" type="button" onclick="return false">検索</button>
+<button id="sbtn2" type="button" onclick="return false">戻す</button>
+
+<select name="order" class="select1">
+<option class="pulldown" value="0">追加順</option>
 <option class="pulldown" value="1">タイトル順</option>
 <option class="pulldown" value="2">更新順</option>
 </select>
-</form>
-  <form action="BookPushConfServlet" method="post">
-	<div class="form-check">
+
+<!-- </form> -->
+
+
+  <div class="form-check">
+	<table >
+	<thead><tr><td></td><td>title</td><td>modified</td></tr></thead>
+	<tbody id="table1">
 	 <c:forEach var="myBook" items="${myBooks}">
-	  <input class="form-check-input" type="checkbox"  value="${myBook.book_id}">
-	  <label class="form-check-label" for="check1a">${myBook.title}</label><br>
+	 <tr>
+	  <td><input class="form-check-input" type="checkbox"  value="${myBook.book_id}"></td>
+	  <td><label class="form-check-label" for="check1a" >${myBook.title}</label></td>
+	  <td><input class="form-modified" type="text"  value="${myBook.modified}">
+	  </td>
+	  </tr>
 	 </c:forEach>
+	 </tbody>
+	 </table>
 	</div>
 <!-- <button type="button" onclick="return false;"> 共有する</button>
 その後非同期でBookPushServletにbooks id ourbookid渡す
@@ -60,18 +74,18 @@
         </button>
       </div>
       <div class="modal-body">
-			<input class="form-control" name="name" type="text" placeholder="BOOK名">
-			<input class="form-control" name="pass" type="password" placeholder="パスワード">
+			<input id="share-name" class="form-control" name="name" type="text" placeholder="BOOK名">
+			<input id="share-pass" class="form-control" name="pass" type="password" placeholder="パスワード">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-        <button type="submit" class="btn btn-primary">OK</button>
+        <button id="share" type="button" class="btn btn-primary">OK</button>
       </div>
     </div>
   </div>
 </div>
 
-</form>
+
 
 </div>
 
@@ -80,22 +94,34 @@
 
 <form action="BookOServlet" method="post">
 
-<select name="order">
-<option class="pulldown" value="0">作成順</option>
-<option class="pulldown" value="1">タイトル順</option>
+<select name="order" class="select2">
+<option class="pulldown" value="0">共有順</option>
+<option class="pulldown" value="1">名前順</option>
 </select>
 </form>
 
-<form action="BookOdelServlet" method="post">
-	<div class="form-check">
-	 <c:forEach var="ourBook" items="${ourBooks}">
-	  <input class="form-check-input" type="checkbox"  value="${ourBook.id}">
-	  <label class="form-check-label" for="check1a">${ourBook.name}</label><br>
-	 </c:forEach>
-	</div>
-<button type="button" onclick="location.href='BookMainServlet'">メインへ</button><button type="submit" onclick="return false;">共有取り消し</button>
+<!-- <form action="BookOdelServlet" method="post"> -->
 
-</form>
+	<div class="form-check table1">
+	<table>
+	<thead><tr><td></td><td>title</td></tr></thead>
+	<tbody  id="table2">
+	 <c:forEach var="ourBook" items="${ourBooks}">
+	 <tr>
+	 <td>
+	  <input class="form-check-input" type="checkbox"  value="${ourBook.id}"> </td>
+	  <td>
+	  <label class="form-check-label" for="check1a">${ourBook.name}</label>
+	  </td>
+	   </tr>
+	 </c:forEach>
+	 </tbody>
+	 </table>
+	</div>
+<button type="button" onclick="location.href='BookMainServlet'">メインへ</button>
+<button id="cancel" type="button" onclick="return false;">共有取り消し</button>
+
+<!-- </form> -->
 
 </div>
 

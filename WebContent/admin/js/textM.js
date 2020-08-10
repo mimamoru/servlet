@@ -43,6 +43,9 @@ $('.type-drop').each(function() {
    });
 
 $('#delete-button').on('click',function() {
+	if (!confirm('本当に削除しますか')) {
+        return
+     }
 	const url='TextDeleteServlet';
 //	const kind_num=$("input[name='kind_num']").val();
 //	const like=$("input[name='like']").val();
@@ -95,8 +98,6 @@ bookList.sort((prev, next) => {
 			// タイトル順
 			return $(prev).find("a").text() > $(next).find("a").text()?1:-1
 		case 2:
-			//console.log(Date.parse($(prev).find(".modified").attr("value")))
-			//console.log($(prev).find(".modified").attr("value")+" 00:00")
 			return Date.parse($(next).find(".modified").attr("value"))- Date.parse($(prev).find(".modified").attr("value"))
 	}
 })

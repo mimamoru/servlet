@@ -27,6 +27,7 @@
 <input id="sbox1"   type="text" placeholder="含むキーワード" />
 <button id="sbtn1" type="button" onclick="return false">検索</button>
 <button id="sbtn2" type="button" onclick="return false">戻す</button>
+
   <form action="TextDeleteServlet" method="post">
   <input  name="kind_num" type="hidden" value="${kind_num}">
  <%-- <input   name="like" type="hidden" value="${like}">

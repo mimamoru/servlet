@@ -6,10 +6,12 @@ $('.form-control').on('blur',function(e) {
 		$(this).attr('placeholder','入力してください');
 		}
 });
+
 $('.card-body').on('click',function(e) {
 	const kind_num=$(this).children('input').val();
 	 window.location.href = 'TextMServlet?kind_num='+kind_num;
 });
+
 $('.kind-edit ').on('click',function(e) {
 	const url='BookKindServlet';
 	const kind_num=$(this).parents('.input-group').find("input[name='kind_num']").val();
@@ -40,6 +42,7 @@ $('.kind-edit ').on('click',function(e) {
         })
 	 window.location.href = 'BookMainServlet';
 });
+
 $('#search-ok').on('click',function(e) {
 	const url='BookSeachServlet';
 	const name=$("input[name='name']").val();
@@ -58,28 +61,18 @@ $('#search-ok').on('click',function(e) {
         dataType:"json"
         })
         .done(function(data) {
-
         const id =data.id;
-
-        if(id>0&&confirm("テキストを表示します")){
-
+        if(id>0){
             window.location.href = 'TextOServlet?id='+id;
         }else{
-        if (confirm('該当するブックがありません')) {
-            window.location.href = 'BookMainServlet';
-        }
+        	 alert('該当するカードがありません')
+             window.location.href = 'BookMainServlet';
         }
         })
         .fail((data) => {
         console.log(data+"!!!!")
-        if (confirm('該当するブックがありません')) {
+        alert('該当するカードがありません')
             window.location.href = 'BookMainServlet';
-        }
         })
         });
-
-
-
-
-
-        });
+ });

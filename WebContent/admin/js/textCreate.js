@@ -16,7 +16,7 @@ $(function() {
 	 	['font', ['strikethrough']],
 	 	['fontsize', ['fontsize']],
 	 	['color', ['color']],
-//	 	['table', ['table']],
+	 	['table', ['table']],
 	 	['insert', ['link', 'picture']],
 	 	['view', ['fullscreen']],
 	 	['para', ['ul', 'ol', 'paragraph']],
@@ -26,6 +26,10 @@ $(function() {
 	 $('#create-btn').on('click', function(event){
 		 	const url='TextCreateServlet';
 		 	const title=$("#title").val();
+		 	if(title==""){
+		 		alert("タイトルを入力してください");
+		 		return false;
+		 	}
 		 	const text=$("#contents").summernote('code');
 		 	let favorite;
 		 	 if($(".favorite-btn").hasClass('active')){
@@ -49,19 +53,13 @@ $(function() {
 		        })
 		        .done(function(data) {
 		        	console.log(data)
-		        	 if (confirm('テキストを作成しました')) {
+		        	 alert('テキストを作成しました')
 		                 window.location.href = 'BookMainServlet';
-		             }
-
 		        })
 		        .fail((data) => {
-		        console.log(data+"!!!!")
-		        	 if (confirm('エラーが発生しました')) {
-		                 window.location.href = 'BookMainServlet';
-		             }
+		       alert('エラーが発生しました')
+		             window.location.href = 'BookMainServlet';
+
 		        })
 	   });
-
-
-
 })

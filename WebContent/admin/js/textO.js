@@ -22,16 +22,15 @@ $('.open-btn').on('click',function(e) {
         $('#label1').text(title);
         $('#text').text(text);
         }else{
-        	if (confirm('読み込みできませんでした')) {
+        	alert('読み込みできませんでした')
                 window.location.href = 'TextOServlet?id='+ourBook_id;
-            }
+
         }
         })
         .fail((data) => {
         console.log(data+"!!!!")
-        if (confirm('読み込みできませんでした')) {
-            window.location.href = 'TextOServlet?id='+ourBook_id;
-        }
+        alert('読み込みできませんでした')
+        window.location.href = 'TextOServlet?id='+ourBook_id;
         })
         });
 $('#keep-btn').on('click',function(e) {
@@ -75,62 +74,11 @@ $('#keep-btn').on('click',function(e) {
 	        console.log(data+"!!!!")
 
 	        })
+	        alert('保存しました')
 
-		console.log("!!dc!!")
-		if (confirm(`${myBooks.length}件読み込みました`)) {
 	        //window.location.href = 'TextOServlet?id='+ourBook_id;
-	    }
-    });
 
-//$('#keep-btn').on('click',function(e) {
-//	const url='TextKeepServlet';
-//	const ourBook_id=$("input[name='ourBook_id']").val();
-//	const book_ids = [];
-//	const titles = [];
-//	const texts = [];
-//	const dates = [];
-//
-//
-//
-//		$('input:checkbox[name="book_ids"]:checked').each(function() {
-//
-//			book_ids.push($(this).val());
-//			titles.push($(this).next().val());
-//			texts.push($(this).next().next().val());
-//			dates.push($(this).next().next().next().val());
-//
-//		});
-//
-//$.ajax({
-//        url: url,
-//        type: "POST", // HTTPメソッドを指定（デフォルトはGET）
-//        data: {
-//        	book_ids : book_ids,
-//        	titles : titles,
-//        	texts : texts,
-//        	dates : dates
-//        },
-//        dataType:"json"
-//        })
-//        .done(function(data) {
-//        const msg =data.msg;
-//        if(msg=="fail"){
-//        	if (confirm('保存できませんでした')) {
-//                window.location.href = 'TextOServlet?id='+ourBook_id;
-//            }
-//        }else{
-//        	if (confirm('保存しました')) {
-//                window.location.href = 'BookMainServlet';
-//            }
-//        }
-//        })
-//        .fail((data) => {
-//        console.log(data+"!!!!")
-//        if (confirm('読み込みできませんでした')) {
-//            window.location.href = 'TextOServlet?id='+ourBook_id;
-//        }
-//        })
-//        });
+    });
 
 
 
