@@ -55,7 +55,7 @@
 <td><a href="TextLookServlet?id=${myBook.id}&kind_num=${kind_num}"><c:out value="${myBook.title}" /></a></td>
 <td><input class="modified" type="hidden" value="${myBook.modified}"><c:out value="${myBook.modified}" /></td>
   <td class="form-check">
-	<input class="form-check-input position-static" name="myBook_id" type="checkbox"  value="${myBook.id}">
+	<input class=" position-static" name="myBook_id" type="checkbox"  value="${myBook.id}">
 	<input type="hidden"  value="${myBook.book_id}">
 
 	</td>

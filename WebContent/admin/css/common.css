@@ -8,7 +8,17 @@ html {
 }
 
 body {
-  background: #eeebe7;
+  background: #fffed0;
   padding: 20px 20px;
  /*  text-align: center; */
+}
+
+
+a:hover{
+ font-weight: bold;
+ }
+
+a{
+color: black;
+/* text-align: center; */
 }
