@@ -117,7 +117,8 @@ $('#delete-button').on('click',function() {
 			        })
         });
 
-$("select[name='order']").on('change', function() {
+$("#select-profession").on('change', function() {
+
     const selectedOrder = $(this).val()
     const bookTable = $("#tbody")
     const bookList = bookTable.find("tr")
@@ -210,5 +211,7 @@ $('#sbtn2').on('click', function(){
 		$('#tbody>tr').removeClass("nohit");
 
 });
+
+
 
 })

@@ -7,6 +7,8 @@
 <title>書籍管理システム</title>
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 <link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/bookMain.css">
 <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
 <script type="text/javascript" src="js/bookMain.js"></script>

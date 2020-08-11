@@ -8,6 +8,7 @@
 
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/textM.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
 <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
 <script type="text/javascript" src="js/textM.js"></script>
@@ -40,7 +41,7 @@
   <tbody id="tbody">
   <c:forEach var="myBook" items="${myBooks}">
   <tr>
- <td><button class="favorite-btn" type="button" value="${myBook.favorite}">favorite</button><input class="favorite-input" type="hidden"  value="${myBook.id}"></td>
+ <td><button class="favorite-btn circle_spread_btn" type="button" value="${myBook.favorite}"></button><input class="favorite-input" type="hidden"  value="${myBook.id}"></td>
  <%--  <td><c:out value="${myBook.favorite}" /></td> --%>
 <td>
 <input class="mbid" type="hidden" value="${myBook.id}">
@@ -54,8 +55,8 @@
 <td><a href="TextLookServlet?id=${myBook.id}&kind_num=${kind_num}"><c:out value="${myBook.title}" /></a></td>
 <td><input class="modified" type="hidden" value="${myBook.modified}"><c:out value="${myBook.modified}" /></td>
   <td class="form-check">
-	<input class="form-check-input" name="myBook_id" type="checkbox"  value="${myBook.id}">
-	<input class="form-check-input position-static" type="hidden"  value="${myBook.book_id}">
+	<input class="form-check-input position-static" name="myBook_id" type="checkbox"  value="${myBook.id}">
+	<input type="hidden"  value="${myBook.book_id}">
 
 	</td>
    </tr>

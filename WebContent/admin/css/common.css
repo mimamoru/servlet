@@ -1,0 +1,14 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: #eeebe7;
+  padding: 20px 20px;
+ /*  text-align: center; */
+}
