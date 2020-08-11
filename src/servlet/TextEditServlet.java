@@ -41,12 +41,16 @@ public class TextEditServlet extends HttpServlet {
 		String title=request.getParameter("title");
 		String text=request.getParameter("text");
 		LocalDate date=LocalDate.now();
+		System.out.println(book_id+"oooa"+auther_id);
 		if(account_id==auther_id) {
+			book.setId(book_id);
 			book.setTitle(title);
 			book.setText(text);
 			book.setModified(date);
+			System.out.println(book.getTitle());
 			BupLogic logic2 =new BupLogic();
-			logic2.bup(book);
+			book=logic2.bup(book);
+			System.out.println(book.getTitle());
 		}
 
 		MBupLogic logic3 =new MBupLogic();

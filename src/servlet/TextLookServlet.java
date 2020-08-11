@@ -33,7 +33,7 @@ public class TextLookServlet extends HttpServlet {
 		kinds=logic1.kall(account.getId());
 		request.setAttribute("kinds", kinds);
 		int kind_num=Integer.parseInt(request.getParameter("kind_num"));
-		System.out.println(kind_num);
+
 		request.setAttribute("kind_num", kind_num);
 		MyBook myBook = new MyBook();
 		MBoneLogic logic2 =new MBoneLogic();

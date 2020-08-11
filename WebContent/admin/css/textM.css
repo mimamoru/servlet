@@ -8,3 +8,37 @@
 .nohit{
  display: none;
 }
+
+.s1{
+	width :30px;
+	height:30px;
+	font-size: 0px;
+	border-radius:10px;
+}
+.type-drop{
+	border:0px;
+   outline:none;
+}
+#bookList{
+	width:80%;
+
+}
+
+.table-r{
+	background-color: #ffb8c2;
+}
+.table-g{
+	background-color: #b8edb7;
+}
+.table-b{
+	background-color: #b7e5ff;
+}
+.table-y{
+	background-color: #f3ffb7;
+}
+.table-d{
+	background-color: #c1c3c4;
+}
+.table-s{
+	background-color: #a4ede4;
+}

@@ -28,7 +28,7 @@ public class OurBookDAO {
 	public List<OurBook> oball(int account_id){
 
 		String sql1 = "select * from ourBOOK where owner_id=? and ovisible=true;";
-		String sql2 ="select book_id,title,text,modified,auther_id,visible from ourBOOK left join book_relation on ourBOOK.id = ourBook_id left join book on BOOK.id=book_id where ourbook.id=?;";
+		String sql2 ="select book_id,title,text,modified,auther_id, visible from ourBOOK left join book_relation on ourBOOK.id = ourBook_id left join book on BOOK.id=book_id where ourbook.id=?;";
 
 		List<OurBook> ourBooks = new ArrayList<>();
 		OurBook ourBook=null;
@@ -52,14 +52,15 @@ public class OurBookDAO {
 		        ps2.setInt(1,ourBookId);
 		        rs2 = ps2.executeQuery();
 		        while (rs2.next()) {
-		        	if(rs2.getBoolean("visible")) {
-					book = new Book(rs2.getInt("book_id"),rs2.getString("title"),rs2.getString("text"),rs2.getDate("modified"),rs2.getInt("auther_id"),true);
+
+					book = new Book(rs2.getInt("book_id"),rs2.getString("title"),rs2.getString("text"),rs2.getDate("modified"),rs2.getInt("auther_id"),rs2.getBoolean("visible"));
 					books.add(book);
-		        	}
+
 				}
 		        if(books.size()>0) {
 				ourBook = new OurBook(ourBookId,ourBookName,ourBookPass,ourBookOwner_id,books,true);
-				ourBooks.add(ourBook);}
+				ourBooks.add(ourBook);
+				}
 			}
 		    } catch (SQLException e) {
 		        e.printStackTrace();
@@ -83,6 +84,8 @@ public class OurBookDAO {
 
 	public OurBook obone(int id){
 		String sql1 = "select * from ourBOOK where ovisible=true and id=?;";
+		String sql2 ="select book_id,title,text,modified,auther_id,visible from ourBOOK left join book_relation on ourBOOK.id = ourBook_id left join book on BOOK.id=book_id where ovisible=true  and ourbook.id=?;";
+
 		OurBook ourBook=null;
 		 try {
 			Class.forName (driver);
@@ -98,7 +101,6 @@ public class OurBookDAO {
 				String ourBookPass=rs.getString("pass");
 				int ourBookOwner_id=rs.getInt("owner_id");
 				//boolean visible =rs.getBoolean("visible");
-				String sql2 ="select book_id,title,text,modified,auther_id,visible from ourBOOK left join book_relation on ourBOOK.id = ourBook_id left join book on BOOK.id=book_id where ovisible=true and ourbook.id=?;";
 				ps = conn.prepareStatement(sql2);
 		        ps.setInt(1,id);
 		        rs = ps.executeQuery();
@@ -214,6 +216,7 @@ public class OurBookDAO {
 			}
 		return id;
 	}
+
 
 
 

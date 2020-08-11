@@ -5,13 +5,34 @@ $('.favorite-btn').each(function() {
 		 $(this).toggleClass('active');
      }
 
-})
+});
+
+const kind_num=$('#kind_num').val();
+const switc=function(select,element){switch(element){
+case "1": return select.css("background-color","red")
+case "2": return select.css("background-color","yellow")
+case "3": return select.css("background-color","green")
+case "4": return select.css("background-color","#3fb2bf")
+case "5": return select.css("background-color","blue")
+default:  return select.css("background-color","gray")
+}}
 
 $('.type-drop').each(function() {
-	 let element =$(this).parent().prev().val();
-	 $(this).parent().val(element);
-})
+	const select=$(this).parents(".s1")
+	const option=$(this).attr("value")
+	 let element=select.prev().val();
+	 select.val(element);
+	 switc(select,element);
+});
 
+switch(kind_num){
+case "1": return $("#bookList").addClass("table-r")
+case "2": return $("#bookList").addClass("table-y")
+case "3": return $("#bookList").addClass("table-g")
+case "4": return $("#bookList").addClass("table-s")
+case "5": return $("#bookList").addClass("table-b")
+default:  return $("#bookList").addClass("table-d")
+}
 
  $('.favorite-btn').on('click', function(event){
 	 	const url='TextFavoriteServlet';
@@ -118,10 +139,11 @@ $('.s1').on('change', function(event){
  	const id=$(this).prev().prev().val();
  	const num=$(this).val();
 
- 	const kind_num=$("input[name='kind_num']").val();
-	const like=$("input[name='like']").val();
-	const order=$("input[name='order']").val();
- 	console.log(id)
+// 	const kind_num=$("input[name='kind_num']").val();
+ 	//const kind_num=$('#kind_num').val();
+//	const like=$("input[name='like']").val();
+//	const order=$("input[name='order']").val();
+ 	console.log(id+"id")
  	console.log(num)
     $.ajax({
         url: url,

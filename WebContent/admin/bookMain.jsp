@@ -16,16 +16,16 @@
 
 
 <div class="card-deck">
-<div class="card border-dark mb-3" style="max-width: 20rem max-hetght: 10rem;">
- <div class="card-body text-dark">
+<div class="card bg-secondary mb-3" style="max-width: 20rem max-hetght: 10rem;">
+ <div class="card-body text-light">
   <input name="kind_num" type="hidden"  value="${kinds[0].kind_num}">
    <h4 class="card-title">${kinds[0].kind_name}</h4>
   </div>
   <div class="card-footer " ></div>
 </div>
 
-<div class="card border-danger mb-3" style="max-width: 20rem max-hetght: 10rem;">
- <div class="card-body text-danger">
+<div class="card bg-danger mb-3" style="max-width: 20rem max-hetght: 10rem;">
+ <div class="card-body text-light">
     <input  name="kind_num" type="hidden"  value="${kinds[1].kind_num}">
    <h4 class="card-title">${kinds[1].kind_name}</h4>
   </div>
@@ -33,8 +33,8 @@
 </div>
 
 
-<div class="card border-warning mb-3" style="max-width: 20rem max-hetght: 10rem;">
- <div class="card-body text-warning">
+<div class="card bg-warning mb-3" style="max-width: 20rem max-hetght: 10rem;">
+ <div class="card-body text-light">
    <input  name="kind_num" type="hidden"  value="${kinds[2].kind_num}">
    <h4 class="card-title">${kinds[2].kind_name}</h4>
   </div>
@@ -44,22 +44,22 @@
 
 </div>
 <div class="card-deck">
-<div class="card border-success mb-3" style="max-width: 20rem max-hetght: 10rem;">
-  <div class="card-body text-success">
+<div class="card bg-success mb-3" style="max-width: 20rem max-hetght: 10rem;">
+  <div class="card-body text-light">
     <input  name="kind_num" type="hidden"  value="${kinds[3].kind_num}">
    <h4 class="card-title">${kinds[3].kind_name}</h4>
   </div>
   <div class="card-footer" data-toggle="modal" data-target="#modal4"></div>
 </div>
-<div class="card border-info mb-3" style="max-width: 20rem max-hetght: 10rem;">
-  <div class="card-body text-info">
+<div class="card bg-info mb-3" style="max-width: 20rem max-hetght: 10rem;">
+  <div class="card-body text-light">
     <input  name="kind_num" type="hidden"  value="${kinds[4].kind_num}">
    <h4 class="card-title">${kinds[4].kind_name}</h4>
   </div>
   <div class="card-footer" data-toggle="modal" data-target="#modal5"></div>
 </div>
-  <div class="card border-primary mb-3" style="max-width: 20rem max-hetght: 10rem;">
-  <div class="card-body text-primary">
+  <div class="card bg-primary mb-3" style="max-width: 20rem max-hetght: 10rem;">
+  <div class="card-body text-light">
     <input  name="kind_num" type="hidden"  value="${kinds[5].kind_num}">
    <h4 class="card-title">${kinds[5].kind_name}</h4>
   </div>

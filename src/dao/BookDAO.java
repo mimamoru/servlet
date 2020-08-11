@@ -55,7 +55,7 @@ public class BookDAO {
 	}
 
 	public Book bone(int id){
-		String sql = "select * from BOOK where BOOK.id=? and visible=true;";
+		String sql = "select * from BOOK where BOOK.id=? ;";
 		Book book=null;
 		try {
 			Class.forName (driver);
@@ -157,9 +157,11 @@ public class BookDAO {
 		            ps.setDate(3,book.getModified());
 		            ps.setInt(4,id);
 		            ps.executeUpdate();
-		            nbook = new Book(book);
+
 		          // }
 				conn.commit();
+				System.out.println(id+"pppp"+title);
+				 nbook = new Book(book);
 	           // }
 		    } catch (SQLException e) {
 				try {
@@ -172,7 +174,7 @@ public class BookDAO {
 		        e.printStackTrace();
 		    }finally {
 				try {
-					if(rs != null)rs.close();
+
 					if(ps != null)ps.close();
 					if(conn != null)conn.close();
 					}

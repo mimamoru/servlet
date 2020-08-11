@@ -23,11 +23,13 @@ public class TextOLookServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Book book = new Book();
-		BoneLogic logic2 =new BoneLogic();
-		book=logic2.bone(Integer.parseInt(request.getParameter("id")));
+		BoneLogic logic =new BoneLogic();
+		book=logic.bone(Integer.parseInt(request.getParameter("id")));
 		ObjectMapper mapper = new ObjectMapper();
-		System.out.println(book);
+
 		if(book!=null) {
+			System.out.println(book.getTitle());
+			System.out.println(book.getText());
 			String json = mapper.writeValueAsString(book);
 			response.getWriter().print(json);
 //			request.setAttribute("book", book);
@@ -41,7 +43,22 @@ public class TextOLookServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Book book = new Book();
+		BoneLogic logic2 =new BoneLogic();
+		book=logic2.bone(Integer.parseInt(request.getParameter("id")));
+		ObjectMapper mapper = new ObjectMapper();
 
+		if(book!=null) {
+			System.out.println(book.getTitle());
+			System.out.println(book.getText());
+			String json = mapper.writeValueAsString(book);
+			response.getWriter().print(json);
+//			request.setAttribute("book", book);
+//			RequestDispatcher dispatch = request.getRequestDispatcher("textOLook.jsp");
+//			dispatch.forward(request, response);
+		}else {
+			response.getWriter().print("{\"id\":0}");
+		}
 	}
 
 }

@@ -122,11 +122,12 @@ public class MyBookDAO {
 					}
 			myBook.setTitle(ntitle);
 			System.out.println(myBook.getTitle());
+			System.out.println(ntitle+"new!");
 			conn.setAutoCommit(false);
 			ps = conn.prepareStatement(sql2);
 			ps.setInt(1,account_id);
 			ps.setInt(2,myBook.getBook_id());
-			ps.setString(3,title);
+			ps.setString(3,ntitle);
 			ps.setString(4,myBook.getText());
             ps.setDate(5,myBook.getModified());
             ps.setBoolean(6,myBook.getFavorite());
@@ -195,7 +196,7 @@ public class MyBookDAO {
 				myBook.setTitle(ntitle);
 					conn.setAutoCommit(false);
 		            ps = conn.prepareStatement(sql2);
-		            ps.setString(1,myBook.getTitle());
+		            ps.setString(1,ntitle);
 					ps.setString(2,myBook.getText());
 		            ps.setDate(3,myBook.getModified());
 		            ps.setInt(4,id);

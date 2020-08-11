@@ -48,6 +48,8 @@ public class TextDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] book_ids=request.getParameterValues("book_ids[]");
 		String[] myBook_ids=request.getParameterValues("myBook_ids[]");
+		System.out.println(myBook_ids[0]);
+
 		HttpSession session=request.getSession();
 		Account account=(Account)session.getAttribute("account");
 		int account_id=account.getId();
@@ -55,6 +57,7 @@ public class TextDeleteServlet extends HttpServlet {
 		int auther_id;
 		BoneLogic logic1 =new BoneLogic();
 		int myBook_id;
+		 boolean bool=false;
 		for(int i=0; i<book_ids.length; i++) {
 		   book_id=Integer.parseInt(book_ids[i]);
 		   myBook_id=Integer.parseInt(myBook_ids[i]);
@@ -64,11 +67,11 @@ public class TextDeleteServlet extends HttpServlet {
 			   logic2.bdis(book_id);
 		   }
 		   MBdelLogic logic3 =new MBdelLogic();
-		   boolean bool=logic3.mbdel(myBook_id);
-		   response.getWriter().print(bool);
+		  bool=logic3.mbdel(myBook_id);
+
 		}
 
-
+		response.getWriter().print(bool);
 	}
 
 }

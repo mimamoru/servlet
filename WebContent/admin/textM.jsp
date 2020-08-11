@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>書籍管理システム</title>
-<link rel="stylesheet" type="text/css" href="css/textM.css">
+
 <link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/textM.css">
 <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
 <script type="text/javascript" src="js/textM.js"></script>
@@ -29,10 +30,10 @@
 <button id="sbtn2" type="button" onclick="return false">戻す</button>
 
   <form action="TextDeleteServlet" method="post">
-  <input  name="kind_num" type="hidden" value="${kind_num}">
+  <input  id="kind_num" type="hidden" value="${kind_num}">
  <%-- <input   name="like" type="hidden" value="${like}">
   <input   name="order" type="hidden" value="${order}"> --%>
-  <table id="bookList">
+  <table id="bookList" class="table table-hover">
   <thead>
   <tr><td>FAVORITE</td> <td>BOOK</td> <td>TITLE</td> <td>MODIFIED</td><td>GABAGE</td></tr>
   </thead>
@@ -46,7 +47,7 @@
 <input  class="my" name="book-kind_num" type="hidden" value="${myBook.kind_num}">
 <select class="s1" >
 <c:forEach var="kind" items="${kinds}">
- <option class="type-drop" value="${kind.kind_num}" ><c:out value="${kind.kind_name}" /></option>
+ <option class="type-drop " value="${kind.kind_num}" ><c:out value="${kind.kind_name}" /></option>
  </c:forEach>
 </select>
 </td>
