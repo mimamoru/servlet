@@ -1,14 +1,6 @@
-$(function() {
-//$(".pulldown").val("0")
-$('.favorite-btn').each(function() {
-	 if($(this).attr("value")=="true"){
-		 $(this).toggleClass('active');
-     }
 
-});
 
-const kind_num=$('#kind_num').val();
-const switc=function(select,element){switch(element){
+const switc1=function(select,element){switch(element){
 case "1": return select.css("background-color","red")
 case "2": return select.css("background-color","yellow")
 case "3": return select.css("background-color","green")
@@ -16,23 +8,44 @@ case "4": return select.css("background-color","#3fb2bf")
 case "5": return select.css("background-color","blue")
 default:  return select.css("background-color","gray")
 }}
-
-$('.type-drop').each(function() {
-	const select=$(this).parents(".s1")
-	const option=$(this).attr("value")
-	 let element=select.prev().val();
-	 select.val(element);
-	 switc(select,element);
-});
-
-switch(kind_num){
+const switc2=function(kind_num){switch(kind_num){
 case "1": return $("#bookList").addClass("table-r")
 case "2": return $("#bookList").addClass("table-y")
 case "3": return $("#bookList").addClass("table-g")
 case "4": return $("#bookList").addClass("table-s")
 case "5": return $("#bookList").addClass("table-b")
 default:  return $("#bookList").addClass("table-d")
-}
+}}
+
+$(function() {
+	const kind_num=$('#kind_num').val();
+switc2(kind_num);
+$('.favorite-btn').each(function() {
+	 if($(this).attr("value")=="true"){
+		 $(this).toggleClass('active');
+     }
+
+});
+
+
+//const switc1=function(select,element){switch(element){
+//case "1": return select.css("background-color","red")
+//case "2": return select.css("background-color","yellow")
+//case "3": return select.css("background-color","green")
+//case "4": return select.css("background-color","#3fb2bf")
+//case "5": return select.css("background-color","blue")
+//default:  return select.css("background-color","gray")
+//}}
+
+$('.type-drop').each(function() {
+	const select=$(this).parents(".s1")
+	const option=$(this).attr("value")
+	 let element=select.prev().val();
+	 select.val(element);
+	 switc1(select,element);
+});
+
+
 
  $('.favorite-btn').on('click', function(event){
 	 	const url='TextFavoriteServlet';
@@ -132,7 +145,11 @@ sorted.map((index, elm) => {
 
 
 })
-
+//const select=$(this).parents(".s1")
+//	const option=$(this).attr("value")
+//	 let element=select.prev().val();
+//	 select.val(element);
+//	 switc1(self,num);
 $('.s1').on('change', function(event){
 	const self = $(this);
  	const url='TextTypeServlet';
@@ -155,9 +172,11 @@ $('.s1').on('change', function(event){
         dataType:"text"
         })
         .done(function(data) {
-
+        	console.log(kind_num+"!!oo!!")
         	if(kind_num != 0) {
         		self.parents("tr").remove();
+        	}else{
+        		switc1(self,num);
         	}
 
         console.log(data)
