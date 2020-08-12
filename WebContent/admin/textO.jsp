@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+<script src="https://kit.fontawesome.com/67f6d5ae4d.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <h1>${ourBook.name}</h1>
@@ -30,7 +30,7 @@
 	 <td> <input class="form-check-input" type="checkbox" name="book_ids" value="${oBook.id}">
 	  <label class="form-check-label" for="check1a">${oBook.title}</label></td>
 	   <td><p class="oBook-modified">${oBook.modified}</p></td>
-	   <td><button  name="${oBook.id}" type="button" class="open-btn btn btn-primary" data-toggle="modal" data-target="#modal1">OPEN</button></td>
+	   <td><button  name="${oBook.id}" type="button" class="open-btn btn btn-primary" data-toggle="modal" data-target="#modal1"><i class="fas fa-envelope-open-text"></i></button></td>
 	  <%--  <input type="hidden" name="titles" value="${oBook.title}"> --%>
 
 	  <%--  <input type="hidden" name="texts" value="${oBook.text}"> --%>
@@ -46,8 +46,8 @@
 
 </table>
 </div>
-<button type="button" onclick="location.href='BookMainServlet'">戻る</button>
-<button id="keep-btn" type="submit" onclick="return false;">KEEP</button>
+<button type="button" onclick="location.href='BookMainServlet'"><i class="far fa-arrow-alt-circle-left"></i></button>
+<button id="keep-btn" type="submit" onclick="return false;"><i class="fas fa-download"></i></button>
 </form>
 
 

@@ -12,6 +12,7 @@
 <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
 <script type="text/javascript" src="js/textM.js"></script>
+<script src="https://kit.fontawesome.com/67f6d5ae4d.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <h1>書籍情報の一覧</h1>
@@ -35,8 +36,8 @@
 	<span class="focus_line"></span>
 </div>
 
-<button id="sbtn1" type="button" onclick="return false"><i class="fas fa-trash-alt"></i>検索</button>
-<button id="sbtn2" type="button" onclick="return false">戻す</button>
+<button id="sbtn1" type="button" onclick="return false"><i class="fas fa-search"></i></button>
+<button id="sbtn2" type="button" onclick="return false"><i class="fas fa-undo-alt"></i></button>
 
 
 
@@ -49,13 +50,13 @@
   <table id="bookList" class="table table-hover">
   <thead>
 
-  <tr id="del" ><th > </th> <th > </th> <th > </th> <th> </th><th ><button id="delete-button" class="nohit btn-top-radius" > 削除する</button></th></tr>
-  <tr class="d-flex"><th class="col-2">Favorite</th> <th class="col-2">Book</th> <th class="col-3">Title</th> <th class="col-3">Modified</th><th class="col-2">Delete</th></tr>
+  <tr id="del" ><th > </th> <th > </th> <th > </th> <th> </th><th ><button id="delete-button" class="nohit btn-top-radius" ><i class="far fa-trash-alt"></i></button></th></tr>
+  <tr class="d-flex"><th class="col-2">Favorite</th> <th class="col-2">Kind</th> <th class="col-3">Title</th> <th class="col-3">Modified</th><th class="col-2">Delete</th></tr>
   </thead>
   <tbody id="tbody">
   <c:forEach var="myBook" items="${myBooks}">
   <tr class="d-flex">
- <td class="col-2"><button class="favorite-btn circle_spread_btn" type="button" value="${myBook.favorite}"></button><input class="favorite-input" type="hidden"  value="${myBook.id}"></td>
+ <td class="col-2"><button class="favorite-btn circle_spread_btn" type="button" value="${myBook.favorite}"><i class="far fa-star"></i></button><input class="favorite-input" type="hidden"  value="${myBook.id}"></td>
  <%--  <td><c:out value="${myBook.favorite}" /></td> --%>
 <td class="col-2">
 <input class="mbid" type="hidden" value="${myBook.id}">
@@ -82,7 +83,7 @@
 
 </table>
 </div>
-<button type="button" onclick="location.href='BookMainServlet'">Main</button>
+<button type="button" onclick="location.href='BookMainServlet'"><i class="far fa-arrow-alt-circle-left"></i></button>
 
 
 

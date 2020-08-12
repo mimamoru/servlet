@@ -15,7 +15,7 @@
 <!-- <link rel="stylesheet" type="text/css" href="css/stylesheet.css"> -->
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/textCreate.css">
-
+<script src="https://kit.fontawesome.com/67f6d5ae4d.js" crossorigin="anonymous"></script>
  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
@@ -37,13 +37,13 @@
   </c:forEach>
 
 </select>
-  <input id="title" name="title" type="text" placeholder="タイトル"><button id="create-btn" type="button" name="send" >CREATE</button><br>
+  <input id="title" name="title" type="text" placeholder="タイトル"><button id="create-btn" type="button" name="send" ><i class="fas fa-pencil-alt"></i></button><br>
  <div>
  <textarea id="contents" name="text">
 
  </textarea>
  </div>
-<button type="button" onclick="location.href='BookMainServlet'">戻る</button></form>
+<button type="button" onclick="location.href='BookMainServlet'"><i class="far fa-arrow-alt-circle-left"></i></button></form>
 
 
 

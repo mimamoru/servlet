@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/textLook.css">
  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+<script src="https://kit.fontawesome.com/67f6d5ae4d.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -47,7 +47,7 @@ kind
 
 <td><input id="text-form" type="text" value="${myBook.title}" readonly></td>
 <td>${myBook.modified}</td>
-<td><button id="edit-btn" type="button">edit</button></td>
+<td><button id="edit-btn" type="button">edit<i class="far fa-edit"></i></button></td>
 <td><button class="delete-btn" type="button" value="${myBook.book_id}">delete</button></td>
 
    </tr>
@@ -68,7 +68,7 @@ ${myBook.text}
  </div>
 
 
-<button id="back-btn" type="button">戻る</button>
+<button id="back-btn" type="button"><i class="far fa-arrow-alt-circle-left"></i></button>
 </form>
 
 <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
