@@ -22,3 +22,7 @@ a{
 color: black;
 /* text-align: center; */
 }
+
+td {
+vertical-align: middle;
+}

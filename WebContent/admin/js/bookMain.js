@@ -75,4 +75,11 @@ $('#search-ok').on('click',function(e) {
             window.location.href = 'BookMainServlet';
         })
         });
+
+$('#logout').on('click',function(e) {
+	if(confirm('ログアウトします。よろしいですか。')){
+		location.href='BookMainServlet'
+	}
+});
+
  });

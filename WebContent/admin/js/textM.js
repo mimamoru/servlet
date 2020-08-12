@@ -1,5 +1,3 @@
-
-
 const switc1=function(select,element){switch(element){
 case "1": return select.css("background-color","red")
 case "2": return select.css("background-color","yellow")
@@ -17,8 +15,24 @@ case "5": return $("#bookList").addClass("table-b")
 default:  return $("#bookList").addClass("table-d")
 }}
 
+const delfunc=function(c){
+	if ($(c).length>0){
+		$("#del").addClass("d-flex");
+		$("#del").children().eq(0).addClass("col-2");
+		$("#del").children().eq(1).addClass("col-2");
+		$("#del").children().eq(2).addClass("col-3");
+		$("#del").children().eq(3).addClass("col-3");
+		$("#del").children().eq(4).addClass("col-2");
+		$('#delete-button').fadeIn("slow")
+     }else{
+		$('#delete-button').fadeOut()
+}
+return
+}
+
 $(function() {
-	const kind_num=$('#kind_num').val();
+
+const kind_num=$('#kind_num').val();
 switc2(kind_num);
 $('.favorite-btn').each(function() {
 	 if($(this).attr("value")=="true"){
@@ -76,18 +90,31 @@ $('.type-drop').each(function() {
 	        })
    });
 
+$(".option-input06").on('click',function() {
+
+	const checks=$('input:checkbox[name="myBook_id"]:checked')
+
+	console.log($(checks).length)
+	delfunc(checks)
+
+});
+
+
 $('#delete-button').on('click',function() {
+	const checks=$('input:checkbox[name="myBook_id"]:checked')
+
+	if ($(checks).length==0){
+		alert("削除するカードを選択してください")
+        return false
+     }
 	if (!confirm('本当に削除しますか')) {
-        return
+        return false
      }
 	const url='TextDeleteServlet';
-//	const kind_num=$("input[name='kind_num']").val();
-//	const like=$("input[name='like']").val();
-//	const order=$("input[name='order']").val();
-	const book_ids=[]
+const book_ids=[]
 	const myBook_ids=[]
 	const elm=[]
-		$('input:checkbox[name="myBook_id"]:checked').each(function() {
+		$(checks).each(function() {
 
 			myBook_ids.push($(this).val()),
 			book_ids.push($(this).next().val())
@@ -117,7 +144,7 @@ $('#delete-button').on('click',function() {
 			        })
         });
 
-$("#select-profession").on('change', function() {
+$("#order").on('change', function() {
 
     const selectedOrder = $(this).val()
     const bookTable = $("#tbody")
@@ -191,26 +218,55 @@ $('#sbtn1').on('click', function(){
 	 let word=$("#sbox1").val();
  	 console.log(word)
  	if(word==""){
+	alert("検索ワードを入力してください")
  		return
  	}
  	//event.preventDefault();
  	word=word.toLowerCase();
  	$('#tbody>tr').each(function(e) {
  		const title=$(this).find("a").text().toLowerCase();
- 		 console.log(title)
- 		if(title.indexOf(word)<0){
- 			$(this).addClass("nohit");
+		const check=$(this).find(".option-input06");
+ 		 console.log( $(this).find(".option-input06").prop('checked'))
+ 		 console.log(title.indexOf(word))
+ 		 if(title.indexOf(word)<0){
+		$(check).prop("checked", false);
+		$(this).removeClass("d-flex");
+		$(this).children().eq(0).removeClass("col-2");
+		$(this).children().eq(1).removeClass("col-2");
+		$(this).children().eq(2).removeClass("col-3");
+		$(this).children().eq(3).removeClass("col-3");
+		$(this).children().eq(4).removeClass("col-2");
+		$(this).addClass("nohit");
  		}else{
  			$(this).removeClass("nohit");
+ 			$(this).addClass("d-flex");
+ 			$(this).children().eq(0).addClass("col-2");
+ 			$(this).children().eq(1).addClass("col-2");
+ 			$(this).children().eq(2).addClass("col-3");
+ 			$(this).children().eq(3).addClass("col-3");
+ 			$(this).children().eq(4).addClass("col-2");
+ 			//$(this).removeClass("nohit");
  		}
 	})
+	const checks=$('input:checkbox[name="myBook_id"]:checked')
+	delfunc(checks)
 });
 
 $('#sbtn2').on('click', function(){
+	$('#tbody tr').removeClass("nohit");
+		$('#tbody tr').each(function() {
 
-		$('#tbody>tr').removeClass("nohit");
 
+		$(this).addClass("d-flex");
+		$(this).children('td').eq(0).addClass("col-2");
+		$(this).children('td').eq(1).addClass("col-2");
+		$(this).children('td').eq(2).addClass("col-3");
+		$(this).children('td').eq(3).addClass("col-3");
+		$(this).children('td').eq(4).addClass("col-2");
+		})
 });
+
+
 
 
 

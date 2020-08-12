@@ -4,6 +4,91 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>書籍管理システム</title>
+<link rel="stylesheet" type="text/css" href="css/textO.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+ <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+</head>
+<body>
+<h1>${ourBook.name}</h1>
+<form  method="post">
+<div class="form-check">
+<table>
+<thead>
+<tr>
+ <td>title</td><td>modified</td><td><input  type="hidden" name="ourBook_id" value="${ourBook.id}"></td>
+ </tr>
+ </thead>
+ <tbody>
+
+	 <c:forEach var="oBook" items="${ourBook.getOBooks()}">
+	  <tr>
+	 <td> <input class="form-check-input" type="checkbox" name="book_ids" value="${oBook.id}">
+	  <label class="form-check-label" for="check1a">${oBook.title}</label></td>
+	   <td><p class="oBook-modified">${oBook.modified}</p></td>
+	   <td><button  name="${oBook.id}" type="button" class="open-btn btn btn-primary" data-toggle="modal" data-target="#modal1">OPEN</button></td>
+	  <%--  <input type="hidden" name="titles" value="${oBook.title}"> --%>
+
+	  <%--  <input type="hidden" name="texts" value="${oBook.text}"> --%>
+
+
+	  <%--  <input type="hidden" name="dates" value="${oBook.modified}">
+ --%>
+
+
+ </tr>
+     </c:forEach>
+ </tbody>
+
+</table>
+</div>
+<button type="button" onclick="location.href='BookMainServlet'">戻る</button>
+<button id="keep-btn" type="submit" onclick="return false;">KEEP</button>
+</form>
+
+
+<div class="modal fade fullscreen" id="modal1" tabindex="-1"
+      role="dialog" aria-labelledby="modallabel1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="modallabel1"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="text" class="modal-body">
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-3.5.1.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/bootstrap.bundle.js"charset="UTF-8"></script>
+<script type="text/javascript" src="js/textO.js" charset="UTF-8"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/lang/summernote-ja-JP.js"></script>
+
+
+</body>
+</html>
+
+
+
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
 <title>書籍管理システム</title>
 <link rel="stylesheet" type="text/css" href="css/textO.css">
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -21,13 +106,13 @@
 	 <c:forEach var="oBook" items="${ourBook.getOBooks()}">
 	  <tr>
 	 <td> <input class="form-check-input" type="checkbox" name="book_ids" value="${oBook.id}">
-	  <%--  <input type="hidden" name="titles" value="${oBook.title}"> --%>
+	   <input type="hidden" name="titles" value="${oBook.title}">
 	   <p class="nolook oBook-text"> ${oBook.text}</p>
-	  <%--  <input type="hidden" name="texts" value="${oBook.text}"> --%>
+	   <input type="hidden" name="texts" value="${oBook.text}">
 
 	  <p class="nolook oBook-modified">${oBook.modified}</p>
-	  <%--  <input type="hidden" name="dates" value="${oBook.modified}">
- --%>
+	   <input type="hidden" name="dates" value="${oBook.modified}">
+
 	  <label class="form-check-label" for="check1a">${oBook.title}</label></td>
 <td> <button  name="${oBook.id}" type="button" class="open-btn btn btn-primary" data-toggle="modal" data-target="#modal1">
  OPEN
@@ -58,7 +143,7 @@
 			<!-- <div>text</div> -->
 			<div>
   <textarea id="contents" name="text">
-<%-- ${myBook.text} --%>
+${myBook.text}
  </textarea>
  </div>
       </div>
@@ -76,4 +161,4 @@
 
 
 </body>
-</html>
+</html> --%>

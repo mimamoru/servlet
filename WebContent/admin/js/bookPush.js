@@ -63,13 +63,23 @@ $('#sbtn2').on('click', function(){
 
 });
 
+$('#share-btn').on('click',function() {
+	console.log("sharebtn")
+	const check_count = $('input:checkbox[name="book_id"]:checked').length;
+	if(check_count==0){
+					alert('共有カードを選択してください')
+	    				return false;
+	    			}
+});
 
 $('#share').on('click',function() {
 
 	const url='BookPushConfServlet';
 	const name=$("#share-name").val()
 	const pass=$("#share-pass").val()
+
 	if(name==""||pass==""){
+		alert('name,passwordを入力してください')
 		return false
 	}
 	$.ajax({
@@ -87,9 +97,7 @@ $('#share').on('click',function() {
 	    		const url2='BookPushServlet';
 	    		const b_ids=[]
 	    		const checks='input:checkbox[name="book_id"]:checked'
-	    			if(checks.length==0){
-	    				return false;
-	    			}
+
 	    		$(checks).each(function() {
 	    			b_ids.push($(this).attr("value"))
 	    		})
@@ -120,14 +128,17 @@ $('#share').on('click',function() {
         });
 
 $('#cancel').on('click',function() {
+	const checks='input:checkbox[name="ourBook_id"]:checked'
+
+	if($(checks).length==0){
+		alert('削除するファイルを選択してください')
+		return false
+	}
 	if (!confirm('本当に削除しますか')) {
         return
      }
 	const url='BookODelServlet';
-	const checks='input:checkbox[name="ourBook_id"]:checked'
-	if(checks.length==0){
-		return false;
-	}
+
 	const ob_ids=[]
 	const elm=[]
 
@@ -137,6 +148,7 @@ $('#cancel').on('click',function() {
 
 
 		})
+		console.log(ob_ids[0])
 
 			$.ajax({
 		        url: url,
@@ -160,7 +172,7 @@ $('#cancel').on('click',function() {
 			        })
         });
 
-$('#share-tab').on('click',function() {
+$('#panel2').on('click',function() {
 
 	const url='BookOServlet';
 	//const names=[];

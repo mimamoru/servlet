@@ -17,56 +17,74 @@
 <h1>書籍情報の一覧</h1>
 
 
-
-<select name="order">
+<div class="cp_ipselect">
+<select id="order" class="cp_sl06" required>
 <option class="pulldown" value="0">追加順</option>
 <option class="pulldown" value="1">タイトル順</option>
 <option class="pulldown" value="2">更新順</option>
 </select>
+<span class="cp_sl06_highlight"></span>
+<span class="cp_sl06_selectbar"></span>
+<label class="cp_sl06_selectlabel">Choose</label>
+</div>
 
 
+<div class="cp_iptxt">
+	<input id="sbox1" class="ef" type="text" placeholder="">
+	<label>Contains</label>
+	<span class="focus_line"></span>
+</div>
 
-<input id="sbox1"   type="text" placeholder="含むキーワード" />
-<button id="sbtn1" type="button" onclick="return false">検索</button>
+<button id="sbtn1" type="button" onclick="return false"><i class="fas fa-trash-alt"></i>検索</button>
 <button id="sbtn2" type="button" onclick="return false">戻す</button>
 
-  <form action="TextDeleteServlet" method="post">
+
+
+
+ <div class="container-fluid">
   <input  id="kind_num" type="hidden" value="${kind_num}">
+
  <%-- <input   name="like" type="hidden" value="${like}">
   <input   name="order" type="hidden" value="${order}"> --%>
   <table id="bookList" class="table table-hover">
   <thead>
-  <tr><td>FAVORITE</td> <td>BOOK</td> <td>TITLE</td> <td>MODIFIED</td><td>GABAGE</td></tr>
+
+  <tr id="del" ><th > </th> <th > </th> <th > </th> <th> </th><th ><button id="delete-button" class="nohit btn-top-radius" > 削除する</button></th></tr>
+  <tr class="d-flex"><th class="col-2">Favorite</th> <th class="col-2">Book</th> <th class="col-3">Title</th> <th class="col-3">Modified</th><th class="col-2">Delete</th></tr>
   </thead>
   <tbody id="tbody">
   <c:forEach var="myBook" items="${myBooks}">
-  <tr>
- <td><button class="favorite-btn circle_spread_btn" type="button" value="${myBook.favorite}"></button><input class="favorite-input" type="hidden"  value="${myBook.id}"></td>
+  <tr class="d-flex">
+ <td class="col-2"><button class="favorite-btn circle_spread_btn" type="button" value="${myBook.favorite}"></button><input class="favorite-input" type="hidden"  value="${myBook.id}"></td>
  <%--  <td><c:out value="${myBook.favorite}" /></td> --%>
-<td>
+<td class="col-2">
 <input class="mbid" type="hidden" value="${myBook.id}">
 <input  class="my" name="book-kind_num" type="hidden" value="${myBook.kind_num}">
+
 <select class="s1" >
 <c:forEach var="kind" items="${kinds}">
  <option class="type-drop " value="${kind.kind_num}" ><c:out value="${kind.kind_name}" /></option>
  </c:forEach>
 </select>
 </td>
-<td><a href="TextLookServlet?id=${myBook.id}&kind_num=${kind_num}"><c:out value="${myBook.title}" /></a></td>
-<td><input class="modified" type="hidden" value="${myBook.modified}"><c:out value="${myBook.modified}" /></td>
-  <td class="form-check">
-	<input class=" position-static" name="myBook_id" type="checkbox"  value="${myBook.id}">
-	<input type="hidden"  value="${myBook.book_id}">
+<td class="col-3"><a href="TextLookServlet?id=${myBook.id}&kind_num=${kind_num}"><c:out value="${myBook.title}" /></a></td>
+<td class="col-3"><input class="modified" type="hidden" value="${myBook.modified}"><c:out value="${myBook.modified}" /></td>
+  <td class="form-check list_item col-2">
+  <div class="cp_ipcheck">
+	<input class="option-input06 " name="myBook_id" type="checkbox"  value="${myBook.id}">
 
+	<input type="hidden"  value="${myBook.book_id}">
+</div>
 	</td>
    </tr>
 </c:forEach>
 </tbody>
 
 </table>
-<button type="button" onclick="location.href='BookMainServlet'">メインへ</button>
-<button id="delete-button" type="button" > 削除する</button>
-</form>
+</div>
+<button type="button" onclick="location.href='BookMainServlet'">Main</button>
+
+
 
 
 

@@ -14,7 +14,7 @@
 <script type="text/javascript" src="js/bookMain.js"></script>
 </head>
 <body>
-<h1>書籍情報の一覧</h1>
+<h1>My Folders</h1>
 
 
 <div class="card-deck">
@@ -196,7 +196,7 @@ public space
 
 
 <button type="button" onclick="location.href='BookPushListServlet'">share</button>
-<button type="button" onclick="location.href='LogoutServlet'">logout</button>
+<button id="logout" type="button" >logout</button>
 
 
 
