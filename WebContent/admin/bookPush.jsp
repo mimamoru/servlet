@@ -7,8 +7,9 @@
 <title>書籍管理システム</title>
 
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/common.css">
 <link rel="stylesheet" type="text/css" href="css/bookPush.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+
 <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
 <script type="text/javascript" src="js/bookPush.js"></script>
@@ -27,23 +28,58 @@
 		<div class="cp_tabpanel">
 			<h4>Please Select Cards To Share</h4>
 			<div>
-        <select name="order" class="select1">
+
+<div class="cp_ipselect">
+<select  class="order select1 cp_sl06" required>
+<option class="pulldown" value="0">追加順</option>
+<option class="pulldown" value="1">タイトル順</option>
+<option class="pulldown" value="2">更新順</option>
+</select>
+<span class="cp_sl06_highlight"></span>
+<span class="cp_sl06_selectbar"></span>
+<label class="cp_sl06_selectlabel">Choose</label>
+</div>
+
+
+<div class="cp_iptxt">
+  <input id="sbox1" class="ef" type="text" placeholder="">
+  <label>Contains</label>
+  <span class="focus_line"></span>
+</div>
+
+
+<div class="pagelink">
+<button id="sbtn1" class="cp_btn" ><i class="fas fa-search"></i></button>
+</div>
+
+
+<div class="pagelink">
+<button id="sbtn2" class="cp_btn" ><i class="fas fa-undo-alt"></i></button>
+</div>
+
+      <!--   <select name="order" class="select1">
           <option class="pulldown" value="0">追加順</option>
           <option class="pulldown" value="1">タイトル順</option>
           <option class="pulldown" value="2">更新順</option>
           </select>
           <input id="sbox1"   type="text" placeholder="含むキーワード" />
           <button id="sbtn1" type="button" onclick="return false">検索</button>
-          <button id="sbtn2" type="button" onclick="return false">戻す</button>
-          <div class="table">
-            <table>
-            <thead><tr><td>title</td><td>modified</td><td></td></tr></thead>
+          <button id="sbtn2" type="button" onclick="return false">戻す</ --><!-- button> -->
+
+
+          <div class="container-fluid">
+            <table id="bookList1" class="table table-hover table-o">
+
+            <thead>
+            <tr id="del1"><th></th><th></th><th><button id="share-btn" class="nohit btn-top-radius" data-toggle="modal" data-target="#modal1"><i class="fas fa-share-alt-square"></i></button></th></tr>
+            <tr class="d-flex"><th class="col-6">Title</th><th class="col-3">Modified</th><th class="col-3"></th></tr></thead>
+
             <tbody id="table1">
              <c:forEach var="myBook" items="${myBooks}">
-             <tr>
-              <td><label class="form-check-label" for="check1a" >${myBook.title}</label></td>
-              <td class="form-modified">${myBook.modified}</td>
-              <td><input name="book_id" class="form-check-input" type="checkbox"  value="${myBook.book_id}"></td>
+             <tr class="d-flex">
+              <td class="col-6"><label class="form-check-label" for="check1a" >${myBook.title}</label></td>
+              <td class="col-3"><input class="form-modified" type="hidden" value="${myBook.modified}"><c:out value="${myBook.modified}" /></td>
+              <td class="col-3 form-check"><input name="book_id" class="form-check-input1" type="checkbox"  value="${myBook.book_id}"></td>
 
               </tr>
              </c:forEach>
@@ -52,10 +88,12 @@
           </div>
 
 
-          <button type="button" onclick="location.href='BookMainServlet'"><i class="far fa-arrow-alt-circle-left"></i></button>
-          <button id="share-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+         <div class="pagelink">
+<button class="backbtn cp_btn" ><i class="fas fa-arrow-alt-circle-left"></i></button>
+</div>
+         <!--  <button id="share-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
             共有する
-          </button>
+          </button> -->
           <div class="modal fade" id="modal1" tabindex="-1"
                 role="dialog" aria-labelledby="label1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -67,8 +105,8 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                <input id="share-name" class="form-control" name="name" type="text" placeholder="BOOK名">
-                <input id="share-pass" class="form-control" name="pass" type="password" placeholder="パスワード">
+                <input id="share-name" class="form-control" name="name" type="text" placeholder="Folder Name">
+                <input id="share-pass" class="form-control" name="pass" type="password" placeholder="Password">
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-ban"></i></button>
@@ -85,25 +123,38 @@
 
 
 	<div id="panel2" class="cp_tabpanels">
-		<label for="tab5_2"><i class="fas fa-history"></i>Shared Files</label>
+		<label for="tab5_2"><i class="fas fa-history"></i>Shared Folders</label>
 		<input id="tab5_2" name="cp_tab" type="radio">
 		<div id="share-tab" class="cp_tabpanel">
 			<h4>Files Whitch You Shared</h4>
 			<div>
-        <select name="order" class="select2">
+		<div class="cp_ipselect">
+<select class="order select2 cp_sl06" required>
+<option class="pulldown" value="0">共有順</option>
+<option class="pulldown" value="1">名前順</option>
+</select>
+<span class="cp_sl06_highlight"></span>
+<span class="cp_sl06_selectbar"></span>
+<label class="cp_sl06_selectlabel">Choose</label>
+</div>
+       <!--  <select name="order" class="select2">
           <option class="pulldown" value="0">共有順</option>
           <option class="pulldown" value="1">名前順</option>
-          </select>
-          <div class="table">
-            <table>
-            <thead><tr><td></td><td>title</td></tr></thead>
+          </select> -->
+
+          <div class="table container-fluid">
+            <table id="bookList2" class="table table-hover table-o">
+            <thead><tr id="del2" ><th > </th> <th > </th></tr>
+             <tr class="d-flex"><th class="col-8">Title</th> <th class="col-4" ><button id="cancel" class="nohit btn-top-radius" ><i class="fas fa-users-slash"></i></button></th></tr></thead>
             <tbody  id="table2">
 
              </tbody>
              </table>
             </div>
-            <button type="button" onclick="location.href='BookMainServlet'"><i class="far fa-arrow-alt-circle-left"></i></button>
-<button id="cancel" type="button" onclick="return false;"><i class="fas fa-users-slash"></i></button>
+           <div class="pagelink">
+<button class="backbtn" class="cp_btn" ><i class="fas fa-arrow-alt-circle-left"></i></button>
+</div>
+
 
       </div>
 		</div>

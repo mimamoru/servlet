@@ -14,6 +14,7 @@
 
 </head>
 <body>
+<div class="container-fluid">
 <table id="bookList" >
   <thead>
     <tr class="d-flex"><th class="col-2">Favorite</th> <th class="col-1">Kind</th> <th class="col-4">Title</th> <th class="col-3">Modified</th><th id="tgl-btn" class="col-1">Edit</th><th class="col-1">Delete</th></tr>
@@ -80,7 +81,7 @@ kind
 
 
 </table>
-
+</div>
 
 
 <%-- <p class="text" >${myBook.text}</p> --%>
