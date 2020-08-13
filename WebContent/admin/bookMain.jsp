@@ -189,7 +189,7 @@
 </div>
 
 <div id="menu">
-<div class="cp_tooltip"><button class="cp_button13" type="button" ><i class="fas fa-sign-out-alt"><span  class="cp_tooltiptext">Logout</span></i></button></div>
+<div id="logout" class="cp_tooltip"><button class="cp_button13" type="button" ><i class="fas fa-sign-out-alt"><span  class="cp_tooltiptext">Logout</span></i></button></div>
 <div class="cp_tooltip"><button class="cp_button13" type="button" onclick="location.href='BookPushListServlet'"><i class="fas fa-share-alt-square"><span class="cp_tooltiptext">Share</span></i></button></div>
 <div class="cp_tooltip"><button class="cp_button13" type="button"  data-toggle="modal" data-target="#modal1"><i class="fas fa-people-arrows"><span  class="cp_tooltiptext">Public Space</span></i></button></div>
 <div class="cp_tooltip"><button class="cp_button13" type="button" onclick="location.href='TextCreateServlet'"><i class="fas fa-pencil-alt"><span  class="cp_tooltiptext">Create Card</span></i></button></div>

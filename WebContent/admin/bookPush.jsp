@@ -82,7 +82,7 @@
               <td class="col-3 form-check">
 
               <div class='check-container'>
-              <input id="${myBook.book_id}" class="form-check-input1" name="book_id" class="" type="checkbox"  value="${myBook.book_id}">
+              <input id="${myBook.book_id}" class="form-check-input1" name="book_id"  type="checkbox"  value="${myBook.book_id}">
             <label for='${myBook.book_id}'></label>
 
              </div>

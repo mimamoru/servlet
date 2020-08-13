@@ -11,6 +11,7 @@ html {
 body,head{
   background: #fffed0;
   margin: 20px 20px;
+  text-align: left;
  /*  text-align: center; */
 }
 

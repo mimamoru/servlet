@@ -1,6 +1,26 @@
 //textO.js
+const delfunc=function(c){
+
+	if ($(c).length>0){
+		$("#del").addClass("d-flex");
+		$("#del").children().eq(0).addClass("col-4");
+		$("#del").children().eq(1).addClass("col-3");
+		$("#del").children().eq(2).addClass("col-2");
+		$("#del").children().eq(3).addClass("col-3");
+		$('#keep-btn').fadeIn("slow")
+     }else{
+		$('#keep-btn').hide()
+}
+return
+}
+
 $(function() {
 
+	$(".form-check-input").on('click',function() {
+		const checks=$('input:checkbox[name="book_ids"]:checked')
+		console.log($(checks).length+"kkkkk")
+		delfunc(checks)
+	});
 
 $('.open-btn').on('click',function(e) {
 	const url='TextOLookServlet';
@@ -75,6 +95,8 @@ $('#keep-btn').on('click',function(e) {
 
     });
 
-
+$("#backbtn").on('click', function(){
+	window.location.href = 'BookMainServlet';
+})
 
 });

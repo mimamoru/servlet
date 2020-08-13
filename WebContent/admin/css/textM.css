@@ -293,26 +293,26 @@
 	-webkit-transform: translateX(0) translateY(-0.5rem);
 	        transform: translateX(0) translateY(-0.5rem);
 	border: 2px solid #f2f2f2;
-	border-top-style: none;
-	border-right-style: none;
+	border-top: 1px solid #ececec;
+	border-right: 1px solid #ececec;
 }
 .cp_ipcheck .option-input06:after {
 	z-index: 0;
 	border: 2px solid #f2f2f2;
-	border-bottom-style: none;
-	border-left-style: none;
+	border-bottom: 1px solid #ececec;
+	border-left: 1px solid #ececec;
 }
 .cp_ipcheck .option-input06:checked:before {
 	-webkit-transform: rotate(-45deg) translateX(0.25rem) translateY(-0.75rem);
 	        transform: rotate(-45deg) translateX(0.25rem) translateY(-0.75rem);
 	border-color: #000080;
-	border-left-style: none;
+	border-left: 1px solid #ececec;
 }
 .cp_ipcheck .option-input06:checked:after {
 	-webkit-transform: rotate(45deg) translateX(-0.25rem) translateY(0.25rem);
 	        transform: rotate(45deg) translateX(-0.25rem) translateY(0.25rem);
 	border-color: #000080;
-	border-right-style: none;
+	border-right: 1px solid #ececec;
 }
 
 

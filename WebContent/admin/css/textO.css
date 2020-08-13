@@ -1,3 +1,8 @@
+.table-o{
+	background-color: #ffffff;
+	text-align:left;
+}
+
 .fullscreen .modal-dialog {
 margin: 0 0 0 0;
 max-width: 98%;
@@ -22,4 +27,196 @@ padding: 0 0 0 0;
 img {
 max-width: 100%;
 height: auto;
-}  
+}
+
+
+#del th{
+	height:40px;
+	margin:0;
+  	padding:0;
+  	border:none;
+}
+
+
+#del{
+	height:40px;
+	background: #fffed0;
+	margin:0;
+ 	 padding:0;
+}
+
+.btn-top-radius {
+  position: relative;
+  display: none;
+  height:100%;
+  width:100%;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  color: #ffffff;
+background: #ff8000;
+  border-bottom: solid 0px;
+  border-radius: 15px 15px 0 0;
+  transition: .4s;
+}
+
+.btn-top-radius:hover {
+  background: #ff7306;
+  	color: #FFF;
+
+}
+
+.fa-arrow-alt-circle-left{
+	font-size: 1.5em;
+}
+
+/* ボタン  */
+.pagelink{
+  text-align:center;
+  display: inline-block;
+}
+
+.cp_btn {
+   color: #ff8000;
+  position: relative;
+  display: inline-block;
+  margin:0 5px;
+  border-bottom: 1px solid rgba(0,0,0, 0.3);
+  padding: .5rem .5rem .5rem .5rem;
+  transition: all .3s;
+
+}
+
+.cp_btn:before, .cp_btn:after{
+    content: '';
+    position: absolute;
+    transition: all .3s;
+  }
+
+
+ .cp_btn:after{
+    opacity:0;
+    bottom:0;
+    left:0;
+    height:5%;
+    width:0;
+    background:#ff8000;
+  }
+
+.cp_btn:hover {
+	border:0px;
+  }
+
+.cp_btn:hover:after{
+      opacity:1;
+      width:100%;
+    }
+
+/* チェックボックス２ */
+
+.check-container input[type='checkbox']{
+  display:none;
+}
+.check-container {
+  display:inline-block;
+  position:relative;
+  width:100%;
+  height:100%;
+}
+.check-container input[type='checkbox'] + label{
+   height:20px;
+   z-index:15;
+  position:absolute;
+  left:0px;
+  top:10px;
+  bottom:10px;
+  right:10px;
+  -webkit-transition: all .3s ease;
+          transition: all .3s ease;
+  cursor:pointer;
+  width:20px;
+  border: 2px solid #c8c8c8;
+	/* border-top-style: none;
+	border-right-style: none; */
+border-top: 1px solid #ececec;
+	border-right: 1px solid #ececec;
+
+
+}
+
+.check-container input[type='checkbox']:checked + label{
+
+  -webkit-transition: all .3s ease;
+
+          transition: all .3s ease;
+  display:inline-block;
+  width:20px;
+  height:20px;
+  border-top-color:transparent;
+  border-right-color:transparent;
+  border-bottom-color:#ff8000;
+  border-left-color:transparent;
+transform:rotate(-50deg) translate(5px,-9px);
+
+
+}
+
+.check-container input[type='checkbox']:checked + label:before {
+  content: "";
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  height: 12px;
+  width: 110%;  /* or 100px */
+  border-left:3px solid #ff8000;
+
+}
+/* open */
+.circle_spread_btn {
+	display: inline-block;
+	position: relative;
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	background: #ff8000;
+	border-radius: 50%;
+	border: 0.3px dashed;
+	margin-left:17px;
+	margin-top:3px;
+}
+.circle_spread_btn:hover {
+	 cursor: pointer;
+	 text-decoration: none;
+	text-align: center;
+	 transition: transform .3s;
+	transform-origin: center;
+	transform: scale(0.9, 0.9);
+	opacity: 0.6;
+
+}
+.circle_spread_btn::after {
+    display: inline-block;
+    content: "";
+    width: 33px;
+    height: 33px;
+    position: absolute;
+	 border-radius: 50%;
+	color:#fff;
+	 top: -0.4px;
+	 left: -0.4px;
+    border: 2.8px solid #ff8000;
+	 transition: transform .5s ease;
+	visibility: hidden;
+}
+.circle_spread_btn:hover::after {
+	 cursor: pointer;
+	 text-decoration: none;
+	 transition: transform .5s ease;
+	transform-origin: center;
+	transform: scale(1.4, 1.4);
+	opacity: 0.7;
+	visibility: visible;
+}
