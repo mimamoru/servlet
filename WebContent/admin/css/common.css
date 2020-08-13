@@ -5,15 +5,20 @@
 
 html {
   font-size: 16px;
+
 }
 
-body {
+body,head{
   background: #fffed0;
-  padding: 20px 20px;
+  margin: 20px 20px;
  /*  text-align: center; */
 }
 
-
+button{
+	text-decoration: none;
+	background: transparent;
+	border:none;
+}
 a:hover{
  font-weight: bold;
  }
@@ -25,4 +30,8 @@ color: black;
 
 td {
 vertical-align: middle;
+}
+
+.nohit{
+ display: none;
 }

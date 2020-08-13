@@ -1,5 +1,16 @@
+const switc1=function(select,element){
+switch(element){
+case "1": return select.css("background-color","red")
+case "2": return select.css("background-color","yellow")
+case "3": return select.css("background-color","green")
+case "4": return select.css("background-color","#3fb2bf")
+case "5": return select.css("background-color","blue")
+default:  return select.css("background-color","gray")
+}}
+
 $(function() {
 	const kind_num=$("input[name='kind_num']").val();
+
 	 if($('.favorite-btn').attr("value")=="true"){
 		 $('.favorite-btn').toggleClass('active');
      }
@@ -52,6 +63,14 @@ $(function() {
 	        })
 });
 
+
+		const select=$(".s1")
+		const option=$('.type-drop').attr("value")
+		 let element=select.prev().val();
+		 select.val(element);
+		 switc1(select,element);
+
+
  $('.s1').on('change', function(event){
 		const url='TextTypeServlet';
 		const id=$(".mbid").val();
@@ -69,7 +88,7 @@ $(function() {
 	        dataType:"text"
 	        })
 	        .done(function(data) {
-
+	        switc1(select,num);
 	        console.log(data)
 	        })
 	        .fail((data) => {
@@ -78,7 +97,7 @@ $(function() {
 	});
 
  $('#edit-btn').on('click',function() {
-	 if ($(this).hasClass('edit-second')) {
+	 if (!$("#text-form").hasClass('edit-second')) {
 		 const url='TextEditServlet';
 		 const book_id=$(".delete-btn").val();
 		 const id=$(".mbid").val();
@@ -110,8 +129,10 @@ $(function() {
 
 		        })
      }else{
-    	 $(this).addClass('edit-second');
-    	 $(this).text('finish');
+    	 $("#text-form").removeClass('edit-second');
+    	 $("#tgl-btn").text('Finish');
+    	 const ht=$("#finish-btn").html();
+    	 $("#edit-btn").html(ht);
     	 $('#contents').summernote('enable');
     	 $('#text-form').attr('readonly',false);
      }
@@ -141,7 +162,7 @@ $(function() {
 				        console.log(data)
 				        alert('削除しました')
 				        window.location.href = 'TextMServlet?kind_num='+kind_num;
-   
+
 
 
 				        })
@@ -156,13 +177,13 @@ $(function() {
 
 
  $('#back-btn').on('click',function() {
-	 if($('#edit-btn').hasClass('edit-second')){
+	 if(!$('#text-form').hasClass('edit-second')){
 		 if (!confirm('変更が保存されません。よろしいですか。')) {
 		        return
 		 }
-		 $('#edit-btn').removeClass('edit-second');
-		 $('#text-form').attr('readonly',true);
-		 $('#contents').summernote('disable');
+//		 $('#edit-btn').removeClass('edit-second');
+//		 $('#text-form').attr('readonly',true);
+//		 $('#contents').summernote('disable');
 
 	 }
 

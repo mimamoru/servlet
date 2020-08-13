@@ -1,13 +1,10 @@
 .favorite-btn.active {
-            background-color: #ff844c;
+            background-color: #ff8000;
         }
 .favorite-btn{
             background-color: #b5b5b5;
         }
 
-.nohit{
- display: none;
-}
 
 
 
@@ -52,6 +49,7 @@
 	background-color: #a4ede4;
 }
 
+/* favorite */
 .circle_spread_btn {
 	display: inline-block;
 	position: relative;
@@ -87,7 +85,7 @@
 	color:#fff;
 	 top: -0.4px;
 	 left: -0.4px;
-    border: 2.8px solid #ff844c;
+    border: 2.8px solid #ff8000;
 	 transition: transform .5s ease;
 	visibility: hidden;
 }
@@ -104,13 +102,14 @@
 
 
 
-
+/* 並び替え */
 .cp_ipselect {
 	display: inline-block;
 	position: relative;
 	width: 23%;
 	margin: 1em auto;
 	text-align: center;
+	margin-left:15px;
 }
 .cp_sl06 {
 	position: relative;
@@ -195,13 +194,14 @@
 }
 
 
-
+/* 検索 */
 .cp_iptxt {
 	position: relative;
 	top: 2.5px;
 	width: 38%;
 	margin: 1em 3%;
 	display: inline-block;
+	margin-right :-1px;
 }
 .cp_iptxt input[type='text'] {
 	font: 14px/24px sans-serif;
@@ -262,7 +262,7 @@
 
 
 
-
+/* チェックボックス */
 .cp_ipcheck {
 	width: 100%;
 	text-align: center;
@@ -350,3 +350,55 @@
   background: #000040;
   color: #FFF;
 }
+
+.fa-arrow-alt-circle-left{
+	font-size: 1.5em;
+}
+
+/* ボタン  */
+.pagelink{
+  text-align:center;
+  display: inline-block;
+}
+
+.cp_btn {
+   color: #ff8000;
+  position: relative;
+  display: inline-block;
+  margin:0 5px;
+  border-bottom: 1px solid rgba(0,0,0, 0.3);
+  padding: .5rem .5rem .5rem .5rem;
+  transition: all .3s;
+
+}
+
+.cp_btn:before, .cp_btn:after{
+    content: '';
+    position: absolute;
+    transition: all .3s;
+  }
+
+
+ .cp_btn:after{
+    opacity:0;
+    bottom:0;
+    left:0;
+    height:5%;
+    width:0;
+    background:#ff8000;
+  }
+
+.cp_btn:hover {
+   /*  letter-spacing:3px; */
+	border:0px;
+  }
+
+/* .cp_btn:hover:before{
+      right:5px;
+    } */
+.cp_btn:hover:after{
+      opacity:1;
+      width:100%;
+    }
+
+

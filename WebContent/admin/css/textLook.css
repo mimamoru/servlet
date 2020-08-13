@@ -1,11 +1,136 @@
 .favorite-btn.active {
-            background-color: #9feded;
+            background-color: #ff8000;
         }
 .favorite-btn{
             background-color: #b5b5b5;
         }
 
-.edit-second {
-            background-color: #9feded;
-        }
+#text-form{
+	border:0;
+padding:10px;
+font-size:14px;
+border:solid 1px #ccc;
 
+width:100%;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.edit-second {
+    background-color: #f3f3f3;
+ }
+
+ #wrap{
+ margin-top:10px;
+ }
+
+.s1{
+	width :30px;
+	height:30px;
+	border-radius:10px;
+	text-indent:100%;
+	white-space:nowrap;
+	overflow:hidden;
+	margin-top:6px;
+}
+
+.type-drop{
+
+	border:0px;
+   outline:none;
+
+}
+
+.circle_spread_btn {
+	display: inline-block;
+	position: relative;
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	background: #e9e9e9;
+	border-radius: 50%;
+	border: 0.3px dashed;
+	margin-left:17px;
+	margin-top:3px;
+}
+.circle_spread_btn:hover {
+	 cursor: pointer;
+	 text-decoration: none;
+	text-align: center;
+	 transition: transform .3s;
+	transform-origin: center;
+	transform: scale(0.9, 0.9);
+	opacity: 0.6;
+
+}
+.circle_spread_btn::after {
+    display: inline-block;
+    content: "";
+    width: 33px;
+    height: 33px;
+    position: absolute;
+	 border-radius: 50%;
+	color:#fff;
+	 top: -0.4px;
+	 left: -0.4px;
+    border: 2.8px solid #ff8000;
+	 transition: transform .5s ease;
+	visibility: hidden;
+}
+.circle_spread_btn:hover::after {
+	 cursor: pointer;
+	 text-decoration: none;
+	 transition: transform .5s ease;
+	transform-origin: center;
+	transform: scale(1.4, 1.4);
+	opacity: 0.7;
+	visibility: visible;
+}
+
+.pagelink{
+  text-align:center;
+  display: inline-block;
+}
+
+.cp_btn {
+   color: #ff8000;
+  position: relative;
+  display: inline-block;
+  margin:0 5px;
+  border-bottom: 1px solid rgba(0,0,0, 0.3);
+  padding: .5rem .5rem .5rem .5rem;
+  transition: all .3s;
+
+}
+
+.cp_btn:before, .cp_btn:after{
+    content: '';
+    position: absolute;
+    transition: all .3s;
+  }
+
+
+ .cp_btn:after{
+    opacity:0;
+    bottom:0;
+    left:0;
+    height:5%;
+    width:0;
+    background:#ff8000;
+  }
+
+.cp_btn:hover {
+/* letter-spacing:3px; */
+	border:0px;
+  }
+
+/* #back-btn:hover:before{
+  right:5px;
+    } */
+.cp_btn:hover:after{
+      opacity:1;
+      width:100%;
+    }

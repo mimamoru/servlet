@@ -54,6 +54,38 @@ public class KindDAO {
 		return myKinds;
 	}
 
+	public String kone(int account_id,int kind_num){
+		String sql = "select kind_name from kind where account_id= ? and kind_num=?;";
+		String str="";
+		try {
+			Class.forName (driver);
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1,account_id);
+			ps.setInt(2,kind_num);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				str = rs.getString("kind_name");
+
+			}
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+			finally {
+				try {
+					if(rs != null)rs.close();
+					if(ps != null)ps.close();
+					if(conn != null)conn.close();
+					}
+			catch (SQLException e){
+				e.printStackTrace();
+				}
+			}
+		return str;
+	}
+
 
 
 	public List<Kind> kins(Account account){

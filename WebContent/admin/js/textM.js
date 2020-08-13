@@ -25,7 +25,7 @@ const delfunc=function(c){
 		$("#del").children().eq(4).addClass("col-2");
 		$('#delete-button').fadeIn("slow")
      }else{
-		$('#delete-button').fadeOut()
+		$('#delete-button').hide()
 }
 return
 }
@@ -103,10 +103,10 @@ $(".option-input06").on('click',function() {
 $('#delete-button').on('click',function() {
 	const checks=$('input:checkbox[name="myBook_id"]:checked')
 
-	if ($(checks).length==0){
-		alert("削除するカードを選択してください")
-        return false
-     }
+//	if ($(checks).length==0){
+//		alert("削除するカードを選択してください")
+//        return false
+//     }
 	if (!confirm('本当に削除しますか')) {
         return false
      }
@@ -266,7 +266,9 @@ $('#sbtn2').on('click', function(){
 		})
 });
 
-
+$("#backbtn").on('click', function(){
+	window.location.href = 'BookMainServlet';
+})
 
 
 

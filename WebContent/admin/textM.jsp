@@ -15,7 +15,7 @@
 <script src="https://kit.fontawesome.com/67f6d5ae4d.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>書籍情報の一覧</h1>
+<h1>${kind_name}</h1>
 
 
 <div class="cp_ipselect">
@@ -36,10 +36,15 @@
 	<span class="focus_line"></span>
 </div>
 
-<button id="sbtn1" type="button" onclick="return false"><i class="fas fa-search"></i></button>
-<button id="sbtn2" type="button" onclick="return false"><i class="fas fa-undo-alt"></i></button>
+
+<div class="pagelink">
+<button id="sbtn1" class="cp_btn" ><i class="fas fa-search"></i></button>
+</div>
 
 
+<div class="pagelink">
+<button id="sbtn2" class="cp_btn" ><i class="fas fa-undo-alt"></i></button>
+</div>
 
 
  <div class="container-fluid">
@@ -83,8 +88,9 @@
 
 </table>
 </div>
-<button type="button" onclick="location.href='BookMainServlet'"><i class="far fa-arrow-alt-circle-left"></i></button>
-
+<div class="pagelink">
+<button id="backbtn" class="cp_btn" ><i class="fas fa-arrow-alt-circle-left"></i></button>
+</div>
 
 
 

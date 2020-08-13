@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import logic.KallLogic;
+import logic.KoneLogic;
 import logic.MBallLogic;
 import model.Account;
 import model.Kind;
@@ -40,10 +41,14 @@ public class TextMServlet extends HttpServlet {
 		//System.out.println(request.getParameter("kind_num"));
 		int kind_num=Integer.parseInt(request.getParameter("kind_num"));
 		myBooks=logic1.mball(account_id,kind_num);
+		KoneLogic logic3 =new KoneLogic();
+		String kind_name=logic3.kone(account_id,kind_num);
+		System.out.println(kind_name);
 		if(myBooks==null) {
 			myBooks = new ArrayList<MyBook>();
 		}
 		request.setAttribute("kind_num", kind_num);
+		request.setAttribute("kind_name", kind_name);
 //		request.setAttribute("like", "");
 //		request.setAttribute("order", 0);
 			request.setAttribute("myBooks", myBooks);

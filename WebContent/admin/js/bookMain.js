@@ -9,6 +9,7 @@ $('.form-control').on('blur',function(e) {
 
 $('.card-body').on('click',function(e) {
 	const kind_num=$(this).children('input').val();
+
 	 window.location.href = 'TextMServlet?kind_num='+kind_num;
 });
 
