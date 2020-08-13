@@ -241,7 +241,6 @@
 .cp_ipcheck .list_item {
 	width: 100%;
 	padding: 0;
-	margin-right:7px;
 	text-align: center;
 }
 
@@ -254,9 +253,10 @@
 .cp_ipcheck .option-input06:before, .option-input06:after {
 	position: absolute;
 	z-index: 1;
-	left: -1rem;
-	width: 1rem;
-	height: 1rem;
+	top:-10px;
+	left: -1.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
 	content: '';
 	-webkit-transition: -webkit-transform 0.4s ease-in-out, border-top 0.4s ease-in-out, border-bottom 0.4s ease-in-out, border-left 0.1s 0.3s ease-in-out, border-right 0.1s 0.3s ease-in-out;
 	        transition:         transform 0.4s ease-in-out, border-top 0.4s ease-in-out, border-bottom 0.4s ease-in-out, border-left 0.1s 0.3s ease-in-out, border-right 0.1s 0.3s ease-in-out;
@@ -408,6 +408,9 @@
   cursor:pointer;
   width:20px;
   border: 2px solid #c8c8c8;
+	border-top-style: none;
+	border-right-style: none;
+
 
 
 }
@@ -426,6 +429,7 @@
   border-left-color:transparent;
 transform:rotate(-50deg) translate(5px,-9px);
 
+
 }
 
 .check-container input[type='checkbox']:checked + label:before {
@@ -435,5 +439,6 @@ transform:rotate(-50deg) translate(5px,-9px);
   bottom: -2px;
   height: 12px;
   width: 110%;  /* or 100px */
-  border-left:4px solid #ff8000;
+  border-left:3px solid #ff8000;
+
 }

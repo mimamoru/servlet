@@ -1,4 +1,19 @@
+const switc1=function(select,element){
+switch(element){
+case "1": return select.css("background-color","red")
+case "2": return select.css("background-color","yellow")
+case "3": return select.css("background-color","green")
+case "4": return select.css("background-color","#3fb2bf")
+case "5": return select.css("background-color","blue")
+default:  return select.css("background-color","gray")
+}}
+
 $(function() {
+	switc1($('.s1'),"0")
+	 $('.s1').on('change', function(event){
+		 const num=$(this).val();
+		 switc1($('.s1'),num)
+	 });
 	 $('.favorite-btn').on('click', function(event){
 
 	        $(this).toggleClass('active');
@@ -25,7 +40,7 @@ $(function() {
 
 	 $('#create-btn').on('click', function(event){
 		 	const url='TextCreateServlet';
-		 	const title=$("#title").val();
+		 	const title=$("#text-form").val();
 		 	if(title==""){
 		 		alert("タイトルを入力してください");
 		 		return false;
@@ -62,4 +77,15 @@ $(function() {
 
 		        })
 	   });
+
+	 $('#back-btn').on('click',function() {
+
+			 if (!confirm('下書きが保存されません。よろしいですか。')) {
+			        return
+			 }
+
+
+			 window.location.href = 'BookMainServlet';
+
+	});
 })
