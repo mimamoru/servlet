@@ -263,8 +263,10 @@
 	-webkit-transform: translateX(0) translateY(-0.5rem);
 	        transform: translateX(0) translateY(-0.5rem);
 	border: 2px solid #c8c8c8;
-	border-top: 1px solid #ececec;
-	border-right: 1px solid #ececec;
+	border-top-style: none;
+	border-right-style: none;
+	/* border-top: 1px solid #ececec;
+	border-right: 1px solid #ececec; */
 }
 .cp_ipcheck .option-input06:after {
 	z-index: 0;
