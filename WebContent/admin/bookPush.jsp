@@ -79,7 +79,14 @@
              <tr class="d-flex">
               <td class="col-6"><label class="form-check-label" for="check1a" >${myBook.title}</label></td>
               <td class="col-3"><input class="form-modified" type="hidden" value="${myBook.modified}"><c:out value="${myBook.modified}" /></td>
-              <td class="col-3 form-check"><input name="book_id" class="form-check-input1" type="checkbox"  value="${myBook.book_id}"></td>
+              <td class="col-3 form-check">
+
+              <div class='check-container'>
+              <input id="${myBook.book_id}" class="form-check-input1" name="book_id" class="" type="checkbox"  value="${myBook.book_id}">
+            <label for='${myBook.book_id}'></label>
+
+             </div>
+              </td>
 
               </tr>
              </c:forEach>
@@ -99,7 +106,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="label1">PUSH TEXT</h5>
+                  <h5 class="modal-title" id="label1">Share Text</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -121,7 +128,7 @@
 
 
 	<div id="panel2" class="cp_tabpanels">
-		<label for="tab5_2"><i class="fas fa-history"></i>Shared Folders</label>
+		<label id="label2" for="tab5_2">Shared Folders</label>
 		<input id="tab5_2" name="cp_tab" type="radio">
 		<div id="share-tab" class="cp_tabpanel">
 			<!-- <h4>Files Whitch You Shared</h4> -->
@@ -142,17 +149,18 @@
 
           <div class="table container-fluid">
             <table id="bookList2" class="table table-hover table-o">
-            <thead><tr id="del2" ><th > </th> <th > </th></tr>
-             <tr class="d-flex"><th class="col-8">Title</th> <th class="col-4" ><button id="cancel" class="nohit btn-top-radius" ><i class="fas fa-users-slash"></i></button></th></tr></thead>
+            <thead><tr id="del2" ><th > </th> <th ><button id="cancel" class="nohit btn-top-radius" ><i class="fas fa-users-slash"></i></button></th></tr>
+             <tr class="d-flex"><th class="col-8">Title</th> <th class="col-4" >Cancel</th></tr></thead>
             <tbody  id="table2">
-
+             <c:forEach var="ourBook" items="${ourBooks}">
+				<tr class="d-flex"><td class="col-8"><input class="form-check-label" type="hidden"><c:out value="${ourBook.name}"/></td><td class="form-check list_item col-4"><div class="cp_ipcheck"><input name="ourBook_id" class="option-input06" type="checkbox"  value="${ourBook.id}"></div></td></tr>
+             </c:forEach>
              </tbody>
              </table>
             </div>
            <div class="pagelink">
-<button class="backbtn" class="cp_btn" ><i class="fas fa-arrow-alt-circle-left"></i></button>
-
-      </div>
+<button class="backbtn cp_btn" ><i class="fas fa-arrow-alt-circle-left"></i></button>
+</div>
 		</div>
   </div>
 

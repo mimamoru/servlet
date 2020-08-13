@@ -1,8 +1,8 @@
-
-/* *, *:before, *:after {
+*, *:before, *:after {
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
-} */
+}
+
 .table-o{
 	background-color: #ffffff;
 	text-align:left;
@@ -32,7 +32,7 @@
 	cursor: pointer;
 	display: block;
 	line-height: 1em;
-	padding: 2rem 0;
+	/* padding: 2rem 0; */
 	text-align: center;
 }
 .cp_tab [type="radio"]:hover,
@@ -79,7 +79,7 @@
 	/* height:60px; */
 	margin: 2em auto;
 	text-align: center;
-	/* margin-left:15px; */
+	 margin-left:15px;
 }
 .cp_sl06 {
 	position: relative;
@@ -128,7 +128,7 @@
 }
 .cp_sl06:focus ~ .cp_sl06_selectlabel, .cp_sl06:valid ~ .cp_sl06_selectlabel {
 	color: #ff8000;
-	top: -43px;
+	top: -13px;
 	transition: 0.4s ease all;
 	font-size: 14px;
 }
@@ -216,8 +216,8 @@
 .ef ~ label {
 	position: absolute;
 	z-index: -1;
-	top: -22px;
-	left: -100px;
+	top: 3px;
+	left: -77px;
 	width: 100%;
 	transition: 0.3s;
 	letter-spacing: 0.5px;
@@ -225,7 +225,7 @@
 }
 .ef:focus ~ label, .cp_iptxt.ef ~ label {
 	font-size: 14px;
-	top: -50px;
+	top: -20px;
 	transition: 0.3s;
 	color: #ff8000;
 }
@@ -262,7 +262,7 @@
 	        transition:         transform 0.4s ease-in-out, border-top 0.4s ease-in-out, border-bottom 0.4s ease-in-out, border-left 0.1s 0.3s ease-in-out, border-right 0.1s 0.3s ease-in-out;
 	-webkit-transform: translateX(0) translateY(-0.5rem);
 	        transform: translateX(0) translateY(-0.5rem);
-	border: 2px solid #f2f2f2;
+	border: 2px solid #c8c8c8;
 	border-top-style: none;
 	border-right-style: none;
 }
@@ -310,7 +310,7 @@
   padding:0;
   text-decoration: none;
   color: #ffffff;
-  background: #000080;
+
   border-bottom: solid 0px #000080;
   border-radius: 15px 15px 0 0;
   transition: .4s;
@@ -320,7 +320,20 @@
   background: #000040;
   color: #FFF;
 }
-
+#cancel{
+	background: #000080;
+}
+#cancel:hover{
+	background: #000040;
+  	color: #FFF;
+}
+#share-btn{
+	background: #ff8000;
+}
+#share-btn:hover{
+	background: #ff7306;
+  	color: #FFF;
+}
 .fa-arrow-alt-circle-left{
 	font-size: 1.5em;
 }
@@ -371,4 +384,56 @@
       width:100%;
     }
 
+/* チェックボックス２ */
 
+.check-container input[type='checkbox']{
+  display:none;
+}
+.check-container {
+  display:inline-block;
+  position:relative;
+  width:100%;
+  height:100%;
+}
+.check-container input[type='checkbox'] + label{
+   height:20px;
+   z-index:15;
+  position:absolute;
+  left:0px;
+  top:-1px;
+  bottom:10px;
+  right:10px;
+  -webkit-transition: all .3s ease;
+          transition: all .3s ease;
+  cursor:pointer;
+  width:20px;
+  border: 2px solid #c8c8c8;
+
+
+}
+
+.check-container input[type='checkbox']:checked + label{
+
+  -webkit-transition: all .3s ease;
+
+          transition: all .3s ease;
+  display:inline-block;
+  width:20px;
+  height:20px;
+  border-top-color:transparent;
+  border-right-color:transparent;
+  border-bottom-color:#ff8000;
+  border-left-color:transparent;
+transform:rotate(-50deg) translate(5px,-9px);
+
+}
+
+.check-container input[type='checkbox']:checked + label:before {
+  content: "";
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  height: 12px;
+  width: 110%;  /* or 100px */
+  border-left:4px solid #ff8000;
+}

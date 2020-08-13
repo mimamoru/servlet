@@ -31,10 +31,14 @@ $(function() {
 		delfunc1(checks)
 	});
 
-	$(".form-check-input2").on('click',function() {
+	$(".option-input06").on('click',function() {
+		console.log("kkkllkk")
 		const checks=$('input:checkbox[name="ourBook_id"]:checked')
-		console.log($(checks).length)
+
 		delfunc2(checks)
+	});
+	$("#bookList2 tr").on('click',function() {
+		console.log("kkっplkk")
 	});
 
 
@@ -184,11 +188,7 @@ $('#share').on('click',function() {
 $('#cancel').on('click',function() {
 	const checks='input:checkbox[name="ourBook_id"]:checked'
 
-	if($(checks).length==0){
-		alert('削除するファイルを選択してください')
-		return false
-	}
-	if (!confirm('本当に削除しますか')) {
+	if (!confirm('本当に取り消しますか')) {
         return
      }
 	const url='BookODelServlet';
@@ -226,33 +226,33 @@ $('#cancel').on('click',function() {
 			        })
         });
 
-$('#panel2').on('click',function() {
-
-	const url='BookOServlet';
-	//const names=[];
-			$.ajax({
-		        url: url,
-		        type: "GET", // HTTPメソッドを指定（デフォルトはGET）
-		        dataType:"json"
-		        }) .done(function(data) {
-
-			        console.log(data)
-			         $("#table2").children().remove()
-			        data.forEach( function(e) {
-			        $("#table2").append("<tr class=\"d-flex\"><td class=\"col-8\"><label class=\"form-check-label\" for=\"check1a\">"+e.name+"</label></td><td class=\"form-check col-4\"><input name=\"ourBook_id\" class=\"form-check-input2\" type=\"checkbox\"  value=\""+e.id+"\"></td></tr>")
-						//names.push("<tr><td>"+e.name()+"</tr></td>");
-						 });
-
-			        })
-			        .fail((data) => {
-			        console.log(data+"!!!!")
-
-			        }).always(() => {
-
-			         $("#bookList2").addClass("table-o")
-			        }
-			        		)
-        });
+//$('#label2').on('click',function() {
+//
+//	const url='BookOServlet';
+//	//const names=[];
+//			$.ajax({
+//		        url: url,
+//		        type: "GET", // HTTPメソッドを指定（デフォルトはGET）
+//		        dataType:"json"
+//		        }) .done(function(data) {
+//		        	const ourBooks = JSON.parse(data);
+//			        console.log(data)
+////			         $("#table2").children().remove()
+////			        data.forEach( function(e) {
+////			        $("#table2").append("<tr class=\"d-flex\"><td class=\"col-8\"><input class=\"form-check-label\" type=\"hidden\">"+e.name+"</input></td><td class=\"form-check list_item col-4\"><div class=\"cp_ipcheck\"><input name=\"ourBook_id\" class=\"option-input06\" type=\"checkbox\"  value=\""+e.id+"\"></div></td></tr>")
+//
+////						 });
+//
+//			        })
+//			        .fail((data) => {
+//			        console.log(data+"!!!!")
+//
+//			        }).always(() => {
+//
+//			         $("#bookList2").addClass("table-o")
+//			        }
+//			        		)
+//        });
 $(".backbtn").on('click', function(){
 	window.location.href = 'BookMainServlet';
 })
