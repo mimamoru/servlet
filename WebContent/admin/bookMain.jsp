@@ -71,12 +71,7 @@
 
 </div>
 
-<button type="button" onclick="location.href='TextCreateServlet'"><i class="fas fa-pencil-alt"></i></button>
 
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
-<i class="fas fa-people-arrows"></i>
-</button>
 <div class="modal fade" id="modal1" tabindex="-1"
       role="dialog" aria-labelledby="label1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -193,11 +188,44 @@
   </div>
 </div>
 
+<div id="menu">
+<div class="cp_tooltip"><button class="cp_button13" type="button" ><i class="fas fa-sign-out-alt"><span  class="cp_tooltiptext">Logout</span></i></button></div>
+<div class="cp_tooltip"><button class="cp_button13" type="button" onclick="location.href='BookPushListServlet'"><i class="fas fa-share-alt-square"><span class="cp_tooltiptext">Share</span></i></button></div>
+<div class="cp_tooltip"><button class="cp_button13" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1"><i class="fas fa-people-arrows"><span  class="cp_tooltiptext">Public Space</span></i></button></div>
+<div class="cp_tooltip"><button class="cp_button13" type="button" onclick="location.href='TextCreateServlet'"><i class="fas fa-pencil-alt"><span  class="cp_tooltiptext">Create Card</span></i></button></div>
+</div>
+
+<!-- <div class="clearfix" id="contentBox">
+ <div id="first" class="buttonBox">
+    <button>Hover One</button>
+    <div class="border"></div>
+    <div class="border"></div>
+  </div>
+ <div id="logoutbtn" class="buttonBox">
+    <button id="logout" class="cp_button13" type="button" ><i class="fas fa-sign-out-alt"><span>Logout</span></i></button>
+    <div class="border"></div>
+    <div class="border"></div>
+  </div>
+   <div id="sharebtn" class="buttonBox">
+    <button class="cp_button13" type="button" onclick="location.href='BookPushListServlet'"><i class="fas fa-share-alt-square"><span>Share</span></i></button>
+    <div class="border"></div>
+    <div class="border"></div>
+  </div>
+   <div id="publicbtn" class="buttonBox">
+    <button class="cp_button13" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1"><i class="fas fa-people-arrows"><span>Public Space</span></i></button>
+    <div class="border"></div>
+    <div class="border"></div>
+  </div>
+   <div id="createbtn" class="buttonBox">
+    <button class="cp_button13" type="button" onclick="location.href='TextCreateServlet'"><i class="fas fa-pencil-alt"><span>Create Card</span></i></button>
+    <div class="border"></div>
+    <div class="border"></div>
+  </div>
+
+</div> -->
 
 
 
-<button type="button" onclick="location.href='BookPushListServlet'"><i class="fas fa-share-alt-square"></i></button>
-<button id="logout" type="button" ><i class="fas fa-sign-out-alt"></i>Logout</button>
 
 
 
