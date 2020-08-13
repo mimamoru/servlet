@@ -1,8 +1,8 @@
 
-*, *:before, *:after {
+/* *, *:before, *:after {
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
-}
+} */
 .table-o{
 	background-color: #ffffff;
 	text-align:left;
@@ -76,9 +76,10 @@
 	display: inline-block;
 	position: relative;
 	width: 23%;
-	margin: 1em auto;
+	/* height:60px; */
+	margin: 2em auto;
 	text-align: center;
-	margin-left:15px;
+	/* margin-left:15px; */
 }
 .cp_sl06 {
 	position: relative;
@@ -127,7 +128,7 @@
 }
 .cp_sl06:focus ~ .cp_sl06_selectlabel, .cp_sl06:valid ~ .cp_sl06_selectlabel {
 	color: #ff8000;
-	top: -20px;
+	top: -43px;
 	transition: 0.4s ease all;
 	font-size: 14px;
 }
@@ -215,8 +216,8 @@
 .ef ~ label {
 	position: absolute;
 	z-index: -1;
-	top: 4px;
-	left: 0;
+	top: -22px;
+	left: -100px;
 	width: 100%;
 	transition: 0.3s;
 	letter-spacing: 0.5px;
@@ -224,7 +225,7 @@
 }
 .ef:focus ~ label, .cp_iptxt.ef ~ label {
 	font-size: 14px;
-	top: -16px;
+	top: -50px;
 	transition: 0.3s;
 	color: #ff8000;
 }

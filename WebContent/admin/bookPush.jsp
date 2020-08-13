@@ -26,8 +26,8 @@
 		<label for="tab5_1">My Cards</label>
 		<input id="tab5_1" name="cp_tab" type="radio" checked="checked">
 		<div class="cp_tabpanel">
-			<h4>Please Select Cards To Share</h4>
-			<div>
+			<!-- <h4>Please Select Cards To Share</h4> -->
+
 
 <div class="cp_ipselect">
 <select  class="order select1 cp_sl06" required>
@@ -116,8 +116,6 @@
             </div>
           </div>
 
-
-      </div>
 		</div>
 	</div>
 
@@ -126,12 +124,12 @@
 		<label for="tab5_2"><i class="fas fa-history"></i>Shared Folders</label>
 		<input id="tab5_2" name="cp_tab" type="radio">
 		<div id="share-tab" class="cp_tabpanel">
-			<h4>Files Whitch You Shared</h4>
-			<div>
+			<!-- <h4>Files Whitch You Shared</h4> -->
+			<!-- <div> -->
 		<div class="cp_ipselect">
-<select class="order select2 cp_sl06" required>
-<option class="pulldown" value="0">共有順</option>
-<option class="pulldown" value="1">名前順</option>
+<select class="cp_sl06 order select2" required>
+<option   value="0">共有順</option>
+<option   value="1">名前順</option>
 </select>
 <span class="cp_sl06_highlight"></span>
 <span class="cp_sl06_selectbar"></span>
@@ -153,8 +151,6 @@
             </div>
            <div class="pagelink">
 <button class="backbtn" class="cp_btn" ><i class="fas fa-arrow-alt-circle-left"></i></button>
-</div>
-
 
       </div>
 		</div>
